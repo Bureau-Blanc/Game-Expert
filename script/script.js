@@ -30,7 +30,7 @@ function demarrer() {
 
 //fin du loading screen
 function chargement1() {
-    if (owrestant === 9) {
+    if (owrestant === 0) {
     window.location.href = "../view/jeufps.html";
   }
 }
@@ -48,6 +48,7 @@ window.onload = function () {
   }
 
   if (vie === 1) {
+    document.getid
     document.getElementById("coeur2").src = "../img/brokenheart.png"
     document.getElementById("coeur3").src = "../img/brokenheart.png"
   }
@@ -116,7 +117,7 @@ function validerow() {
         popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
       }
 
-      if (owrestant === 9) {
+      if (owrestant === 0) {
         carimg = document.getElementById("carimg")
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
@@ -133,11 +134,12 @@ function validerow() {
       }
 
       if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake"
         document.getElementById("coeur2").src = "../img/brokenheart.png"
       }
 
       if (vie === 0) {
-        document.getElementById("coeur1").src = "../img/brokenheart.png"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png"
         window.location.href = "../view/gameover.html"
 
       }
@@ -185,7 +187,7 @@ function validerow() {
         popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
       }
 
-      if (owrestant === 9) {
+      if (owrestant === 0) {
         carimg = document.getElementById("carimg")
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
@@ -204,13 +206,13 @@ function validerow() {
       }
 
       if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake"
         document.getElementById("coeur2").src = "../img/brokenheart.png"
       }
 
       if (vie === 0) {
-        document.getElementById("coeur1").src = "../img/brokenheart.png"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png"
         window.location.href = "../view/gameover.html"
-
       }
 
       if (essai <= 2) essai++;
@@ -267,11 +269,12 @@ function validerow() {
       }
 
       if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake"
         document.getElementById("coeur2").src = "../img/brokenheart.png"
       }
 
       if (vie === 0) {
-        document.getElementById("coeur1").src = "../img/brokenheart.png"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png"
         window.location.href = "../view/gameover.html"
 
       }
@@ -367,12 +370,14 @@ function validerfps() {
       }
 
       if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake"
         document.getElementById("coeur2").src = "../img/brokenheart.png"
       }
 
       if (vie === 0) {
-        document.getElementById("coeur1").src = "../img/brokenheart.png"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png"
         window.location.href = "../view/gameover.html"
+
       }
 
       if (essai <= 2) essai++;
@@ -429,11 +434,12 @@ function validerfps() {
       }
 
       if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake"
         document.getElementById("coeur2").src = "../img/brokenheart.png"
       }
 
       if (vie === 0) {
-        document.getElementById("coeur1").src = "../img/brokenheart.png"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png"
         window.location.href = "../view/gameover.html"
 
       }
@@ -452,4 +458,22 @@ function validerfps() {
       }
     }
   }
+}
+
+// --- RESET COMPLET SI GAME OVER --- //
+if (window.location.href.includes("gameover")) {
+  // Reset des variables principales
+  vie = 3;
+  scoreow = 0;
+  scorefps = 0;
+  scoremv = 0;
+  widthow = 0;
+  widthfps = 0;
+  widthmv = 0;
+  owrestant = 10;
+  fpsrestant = 10;
+  mvrestant = 10;
+
+  // Reset du stockage
+  sessionStorage.clear();
 }

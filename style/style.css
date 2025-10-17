@@ -1175,3 +1175,16 @@ left: 25%;
     border: solid 3px #1E2A1E;
     box-shadow: 0 0 21px #91ff00;
 }
+
+#coeurShake {
+  animation: shake 0.4s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  20% { transform: translate(-2px, 1px) rotate(-2deg); }
+  40% { transform: translate(2px, -1px) rotate(2deg); }
+  60% { transform: translate(-1px, 2px) rotate(-1deg); }
+  80% { transform: translate(1px, -2px) rotate(1deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
