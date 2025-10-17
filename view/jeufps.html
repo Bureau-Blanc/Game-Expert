@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="jeu" lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu FPS</title>
+  <link rel="stylesheet" href="../style/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body id="wallpaperjeu" class="jeufps">
+  <div class="container">
+    <img class="coeur" id="coeur1" src="../img/heart.png" alt="coeur">
+    <img class="coeur" id="coeur2" src="../img/heart.png" alt="coeur">
+    <img class="coeur" id="coeur3" src="../img/heart.png" alt="coeur">
+    <div class="bars">
+      <div class="divow">
+        <div id="progressow"><div id="barow"></div></div>
+        <div class="ptsow"><p id="ptsow">0 pts</p></div>
+      </div>
+      <div class="divfps">
+        <div id="progressfps"><div id="barfps"></div></div>
+        <div class="ptsfps"><p id="ptsfps">0 pts</p></div>
+      </div>
+      <div class="divmv">
+        <div id="progressmv"><div id="barmv"></div></div>
+        <div class="ptsmv"><p id="ptsmv">0 pts</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="myNav11" class="overlay11">
+    <p class="essai11" id="essai11">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><div class="border"></div><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">Que veut dire l'anagramme FPS ?</h2>
+      <label class="radiofps"><p class="pfps">Firearm Proficiency System</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">First Playable Shooter</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">First Person Shooter</p><input class="radiofps" name="radio" type="radio" id="11vrai"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav12" class="overlay12">
+    <p class="essai12" id="essai12">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">Qu'est-ce qu'on appelle généralement un Deathmatch ?</h2>
+      <label class="radiofps"><p class="pfps">Un tous contre tous...</p><input class="radiofps" name="radio" type="radio" id="12vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Un équipe contre équipe...</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Un combat en 1vs1</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav13" class="overlay13">
+    <p class="essai13" id="essai13">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">Quel est le FPS le moins apprécié ?</h2>
+      <label class="radiofps"><p class="pfps">Counter-Strike 2</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Overwatch 2</p><input class="radiofps" name="radio" type="radio" id="13vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Rust</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav14" class="overlay14">
+    <p class="essai14" id="essai14">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/karambit.png" alt="fps"></div>
+      <h2 class="h2fps">Quel est le nom de ce type de couteau ?</h2>
+      <input id="input14" class="inputfps" type="text">
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav15" class="overlay15">
+    <p class="essai15" id="essai15">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">Lequel de ces jeux a été remasterisé en FPS ?</h2>
+      <label class="radiofps"><p class="pfps">Les échecs</p><input class="radiofps" name="radio" type="radio" id="15vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Le morpion</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Le puissance 4</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav16" class="overlay16">
+    <p class="essai16" id="essai16">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">De quel jeu vient « Enemy spotted » ?</h2>
+      <label class="radiofps"><p class="pfps">Counter-Strike 2</p><input class="radiofps" name="radio" type="radio" id="16vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Team Fortress 2</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Valorant</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav17" class="overlay17">
+    <p class="essai17" id="essai17">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">De quel FPS vient cette image ?</h2>
+      <label class="radiofps"><p class="pfps">Valorant</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">CS-2</p><input class="radiofps" name="radio" type="radio" id="17vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Apex</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav18" class="overlay18">
+    <p class="essai18" id="essai18">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/fps.png" alt="fps"></div>
+      <h2 class="h2fps">Lequel de ces jeux n'est pas un FPS ?</h2>
+      <label class="radiofps"><p class="pfps">Fortnite</p><input class="radiofps" name="radio" type="radio" id="18vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Valorant</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Receiver 2</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav19" class="overlay19">
+    <p class="essai19" id="essai19">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="miramar" src="/img/miramar.png" alt="fps"></div>
+      <h2 class="h2fps">Quel est le nom de cette carte PUBG ?</h2>
+      <label class="radiofps"><p class="pfps">Icebox</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Miramar</p><input class="radiofps" name="radio" type="radio" id="19vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Erangel</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="myNav20" class="overlay20">
+    <p class="essai20" id="essai20">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1fps">FPS</h1>
+      <div class="divfps"><img class="logo" src="/img/valorant.png" alt="fps"></div>
+      <h2 class="h2fps">Dans Valorant, qui dit « I know exactly where you are » ?</h2>
+      <label class="radiofps"><p class="pfps">Cypher</p><input class="radiofps" name="radio" type="radio" id="20vrai"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Brimstone</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+      <label class="radiofps"><p class="pfps">Omen</p><input class="radiofps" name="radio" type="radio"><span class="checkmarkfps"></span></label>
+    </div>
+    <div class="validerbtn"><button class="validerfps" onclick="validerfps()">Valider</button></div>
+  </div>
+
+  <div id="question11"><span id="11" onclick="questionsfps(this.id)"><img class="cible11" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question12"><span id="12" onclick="questionsfps(this.id)"><img class="cible12" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question13"><span id="13" onclick="questionsfps(this.id)"><img class="cible13" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question14"><span id="14" onclick="questionsfps(this.id)"><img class="cible14" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question15"><span id="15" onclick="questionsfps(this.id)"><img class="cible15" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question16"><span id="16" onclick="questionsfps(this.id)"><img class="cible16" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question17"><span id="17" onclick="questionsfps(this.id)"><img class="cible17" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question18"><span id="18" onclick="questionsfps(this.id)"><img class="cible18" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question19"><span id="19" onclick="questionsfps(this.id)"><img class="cible19" src="/img/rouge.png" alt="boutton"></span></div>
+  <div id="question20"><span id="20" onclick="questionsfps(this.id)"><img class="cible20" src="/img/rouge.png" alt="boutton"></span></div>
+
+  <script src="../script/script.js"></script>
+</body>
+</html>

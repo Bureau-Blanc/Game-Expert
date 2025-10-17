@@ -1,0 +1,1177 @@
+/*accueil*/
+body {
+    font-family: 'Fredoka', sans-serif;
+}
+
+body#accueil {
+    background-image: url(../img/accueil.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.titrea {
+    text-align: center;
+    margin-top: 7%;
+    font-size: 400%;
+    text-shadow: 0 0 7px #00eeff;
+    color: #ffeb99;
+}
+
+.demarrer {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    border-radius: 5%;
+    font-size: 190%;
+    box-shadow: 0 0 7px #ffee00;
+    margin-top: 7%;
+    font-weight: 600;
+    color: #ffeb99;
+    background: #ff66cc;
+    border: solid 1px;
+    padding: 1% 3%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.button:hover {
+    transform: scale(1.3);
+}
+
+/*Jeu ow*/
+.jeu {
+    cursor: crosshair;
+}
+
+.wallpaperjeu {
+    background-image: url(../img/jeu1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+}
+.jeufps {
+    background-image: url(../img/jeufps.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+}
+/*Questions*/
+.coeur {
+    width: 5%;
+    height: 6%;
+    margin-top: 0.4%;
+    margin-left: 0.4%;
+}
+
+.overlay1,
+.overlay2,
+.overlay3,
+.overlay4,
+.overlay5,
+.overlay6,
+.overlay7,
+.overlay8,
+.overlay9,
+.overlay10,
+.overlay11,
+.overlay12,
+.overlay13,
+.overlay14,
+.overlay15,
+.overlay16,
+.overlay17,
+.overlay18,
+.overlay19,
+.overlay20,
+.overlay21,
+.overlay22,
+.overlay23,
+.overlay24,
+.overlay25,
+.overlay26,
+.overlay27,
+.overlay28,
+.overlay29,
+.overlay30 {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: hidden;
+    transition: 0.3s;
+}
+
+/*ow*/
+.h1ow {
+    margin-top: -2%;
+    text-align: center;
+    font-size: 350%;
+    text-shadow: 0 0 7px #91ff00;
+    color: #6FFF6F;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+}
+
+.h2ow {
+    text-align: center;
+    font-size: 275%;
+    text-shadow: 0 0 7px #91ff00;
+    color: #4AEF92;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+    margin-top: 2.4%;
+}
+
+.pow {
+    text-align: left;
+    margin-left: 30%;
+    font-size: 180%;
+    text-shadow: 0 0 7px #91ff00;
+    color: #B8FFC9;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+    margin-top: 0;
+}
+
+.valider {
+    border-radius: 5%;
+    font-size: 190%;
+    box-shadow: 0 0 7px #91ff00;
+    font-weight: 600;
+    color: #7CFC00;
+    background: #1E2A1E;
+    border: solid 1px #91ff00;
+    padding: 1% 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/*logo ow*/
+.openworld {
+    border-radius: 50%;
+    width: 10%;
+    border: solid 5px #1E2A1E;
+    box-shadow: 0 0 7px #91ff00;
+}
+
+/*overlay ow*/
+.divopenworld {
+    justify-content: center;
+    display: flex;
+}
+
+.valider:hover,
+.validerfps:hover {
+    transform: scale(1.3);
+}
+
+.validerbtn {
+    display: flex;
+    justify-content: center;
+}
+
+/*fps*/
+.h1fps {
+    margin-top: -4%;
+    text-align: center;
+    font-size: 350%;
+    text-shadow: 0 0 7px #ff0000;
+    color: #e45937;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+}
+
+.h2fps {
+    text-align: center;
+    font-size: 275%;
+    text-shadow: 0 0 7px #ff0000;
+    color: #ef944a;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+    margin-top: 2.4%;
+}
+
+.pfps {
+    text-align: left;
+    margin-left: 30%;
+    font-size: 180%;
+    text-shadow: 0 0 7px #ff3c00;
+    color: #e7db2e;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+    margin-top: 0;
+}
+
+.validerfps {
+    border-radius: 5%;
+    font-size: 190%;
+    box-shadow: 0 0 7px #fffb00;
+    font-weight: 600;
+    color: #f5bb3f;
+    background: #221101;
+    border: solid 1px #ff4800;
+    padding: 1% 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/*logo fps*/
+.logo, .cs2 {
+    margin-top: 20%;
+    border-radius: 50%;
+    width: 10%;
+    border: solid 5px #ff7b0f;
+    box-shadow: 0 0 10px #f0974f;
+    transition: transform 0.5s;
+}
+
+.logo:hover {
+    transform: scale(1.5);
+}
+.miramar{
+    margin-top: 17%;
+    border-radius: 50%;
+    width: 15%;
+    transition: transform 0.5s;
+    margin-bottom: -2%;
+}
+.miramar:hover, .cs2:hover{
+       transform: scale(2.5);
+}
+/*overlay fps*/
+.divfps {
+    justify-content: center;
+    display: flex;
+}
+
+/*disparition du crystal*/
+#questionfin {
+    display: none;
+}
+
+/*animations crystaux*/
+.cible1,
+.cible2,
+.cible3,
+.cible11,
+.cible12,
+.cible13,
+.cible21,
+.cible22,
+.cible23,
+.cible30 {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    width: 4%;
+    animation-name: myAnimation1;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myAnimation1 {
+    5% {
+        filter: brightness(70%);
+    }
+
+    10% {
+        filter: brightness(60%);
+    }
+
+    15% {
+        filter: brightness(50%);
+    }
+
+    20% {
+        filter: brightness(40%);
+    }
+
+    25% {
+        filter: brightness(50%);
+    }
+
+    30% {
+        filter: brightness(60%);
+    }
+
+    35% {
+        filter: brightness(70%);
+    }
+
+    40% {
+        filter: brightness(60%);
+    }
+
+    45% {
+        filter: brightness(50%);
+    }
+
+    50% {
+        filter: brightness(40%);
+    }
+
+    55% {
+        filter: brightness(50%);
+    }
+
+    60% {
+        filter: brightness(60%);
+    }
+
+    65% {
+        filter: brightness(70%);
+    }
+
+    70% {
+        filter: brightness(60%);
+    }
+
+    75% {
+        filter: brightness(50%);
+    }
+
+    80% {
+        filter: brightness(60%);
+    }
+
+    85% {
+        filter: brightness(70%);
+    }
+
+    90% {
+        filter: brightness(60%);
+    }
+
+    95% {
+        filter: brightness(50%);
+    }
+
+    100% {
+        filter: brightness(60%);
+    }
+}
+
+.cible26,
+.cible27,
+.cible28,
+.cible29,
+.cible6,
+.cible7,
+.cible8,
+.cible16,
+.cible17,
+.cible18 {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    width: 3%;
+    animation-name: myAnimation2;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myAnimation2 {
+    5% {
+        filter: brightness(90%);
+    }
+
+    10% {
+        filter: brightness(80%);
+    }
+
+    15% {
+        filter: brightness(70%);
+    }
+
+    20% {
+        filter: brightness(60%);
+    }
+
+    25% {
+        filter: brightness(50%);
+    }
+
+    30% {
+        filter: brightness(60%);
+    }
+
+    35% {
+        filter: brightness(70%);
+    }
+
+    40% {
+        filter: brightness(80%);
+    }
+
+    45% {
+        filter: brightness(90%);
+    }
+
+    50% {
+        filter: brightness(100%);
+    }
+
+    55% {
+        filter: brightness(90%);
+    }
+
+    60% {
+        filter: brightness(80%);
+    }
+
+    65% {
+        filter: brightness(70%);
+    }
+
+    70% {
+        filter: brightness(60%);
+    }
+
+    75% {
+        filter: brightness(50%);
+    }
+
+    80% {
+        filter: brightness(60%);
+    }
+
+    85% {
+        filter: brightness(70%);
+    }
+
+    90% {
+        filter: brightness(80%);
+    }
+
+    95% {
+        filter: brightness(90%);
+    }
+
+    100% {
+        filter: brightness(100%);
+    }
+}
+
+.cible4,
+.cible5,
+.cible9,
+.cible10,
+.cible14,
+.cible15,
+.cible19,
+.cible20,
+.cible24,
+.cible25 {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    width: 3.5%;
+    animation-name: myAnimation3;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myAnimation3 {
+    5% {
+        filter: brightness(100%);
+    }
+
+    10% {
+        filter: brightness(90%);
+    }
+
+    15% {
+        filter: brightness(80%);
+    }
+
+    20% {
+        filter: brightness(70%);
+    }
+
+    25% {
+        filter: brightness(60%);
+    }
+
+    30% {
+        filter: brightness(50%);
+    }
+
+    35% {
+        filter: brightness(40%);
+    }
+
+    40% {
+        filter: brightness(30%);
+    }
+
+    45% {
+        filter: brightness(20%);
+    }
+
+    50% {
+        filter: brightness(20%);
+    }
+
+    55% {
+        filter: brightness(20%);
+    }
+
+    60% {
+        filter: brightness(30%);
+    }
+
+    65% {
+        filter: brightness(40%);
+    }
+
+    70% {
+        filter: brightness(50%);
+    }
+
+    75% {
+        filter: brightness(60%);
+    }
+
+    80% {
+        filter: brightness(70%);
+    }
+
+    85% {
+        filter: brightness(80%);
+    }
+
+    90% {
+        filter: brightness(90%);
+    }
+
+    95% {
+        filter: brightness(100%);
+    }
+
+    100% {
+        filter: brightness(100%);
+    }
+}
+
+/*emplacements crystaux*/
+.cible1 {
+    top: 77%;
+    left: 65%;
+}
+
+.cible2 {
+    left: 70%;
+    top: 37%;
+}
+
+.cible3 {
+    top: 10%;
+    left: 3%;
+}
+
+.cible4 {
+    left: 40%;
+}
+
+.cible5 {
+    left: 18%;
+    top: 30%;
+}
+
+.cible6 {
+    left: 55%;
+    top: 20%;
+}
+
+.cible7 {
+    left: 69%;
+    top: 14%;
+}
+
+.cible8 {
+    top: 80%;
+    left: 10%;
+}
+
+.cible9 {
+    top: 57%;
+    left: 23%;
+}
+
+.cible10 {
+    top: 58%;
+    left: 66%;
+}
+
+.cible11 {
+    top: 78%;
+    left: 63%;
+    width: 2%;
+}
+
+.cible12 {
+    left: 10%;
+    top: 70%;
+}
+
+.cible13 {
+    top: 60%;
+    left: 80%;
+}
+
+.cible14 {
+    top: 25%;
+left: 25%;
+}
+
+.cible15 {
+    top: 25%;
+    left: 47%;
+    width: 6%;
+}
+
+.cible16 {
+    left: 90%;
+    top: 35%;
+}
+
+.cible17 {
+    top: 57%;
+    left: 28%;
+    rotate: 343deg;
+    width: 5%;
+}
+
+.cible18 {}
+
+.cible19 {}
+
+.cible20 {}
+
+.cible21 {}
+
+.cible22 {}
+
+.cible23 {}
+
+.cible24 {}
+
+.cible25 {}
+
+.cible26 {}
+
+.cible27 {}
+
+.cible28 {}
+
+.cible29 {}
+
+.cible30 {}
+
+/*Progress bars*/
+.bars {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divow,
+.divfps,
+.divmv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -20%;
+}
+
+.divow {
+    margin-top: -8%;
+}
+
+#progressow,
+#progressfps,
+#progressmv {
+    width: 170px;
+    height: 25px;
+    background-color: black;
+}
+
+#progressow {
+    box-shadow: 0 0 1px #91ff00;
+}
+
+#progressfps {
+    box-shadow: 0 0 1px #ff0000;
+}
+
+#progressmv {
+    box-shadow: 0 0 1px #00c8ff;
+}
+
+#barow,
+#barfps,
+#barmv {
+    height: 100%;
+    width: 0%;
+}
+
+#barow {
+    background-color: rgb(130, 235, 130);
+    box-shadow: 0 0 25px #91ff00;
+}
+
+#barfps {
+    background-color: rgb(235, 130, 130);
+    box-shadow: 0 0 25px #ff0000;
+}
+
+#barmv {
+    width: 0%;
+    background-color: rgb(130, 155, 235);
+    box-shadow: 0 0 25px #00c8ff;
+}
+
+#ptsow,
+#ptsfps,
+#ptsmv {
+    font-size: 200%;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+}
+
+#ptsow {
+    text-shadow: 0 0 7px #91ff00;
+    color: #B8FFC9;
+
+}
+
+.ptsfps {
+    text-shadow: 0 0 7px #ff0000;
+    color: #ffb8b8;
+
+}
+
+.ptsmv {
+    text-shadow: 0 0 7px#00c8ff;
+    color: #00eeff;
+
+}
+
+/*input text*/
+.inputow,
+.inputfps,
+.inputmv {
+    text-align: center;
+    width: 22%;
+    padding-inline: 1%;
+    padding-bottom: 1.2%;
+    padding-top: 1.2%;
+    display: block;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 3.5%;
+    outline: none;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.inputow {
+    box-shadow: 0 0 100px #91ff00;
+    border: solid 1px #91ff00;
+    background: rgba(21, 234, 85, 0.5);
+    font-size: 200%;
+    color: #a8e953;
+}
+
+.inputfps {
+    box-shadow: 0 0 100px #ff9900;
+    border: solid 1px #ff5e00;
+    background: rgba(234, 142, 21, 0.5);
+    font-size: 200%;
+    color: #e9ce53;
+    color: #f5bb3f;
+}
+
+/*loading screens*/
+.chargement,
+.chargement1 {
+    background-position-y: -8%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+}
+
+.chargement1 {
+    background-image: url(../img/chargement1.gif);
+}
+
+/*voiture*/
+.carimg {
+    width: 400%;
+    filter: brightness(20%);
+}
+
+.car {
+    position: relative;
+    position: fixed;
+    width: 2%;
+    cursor: not-allowed;
+    top: 67%;
+    left: 76.5%;
+}
+
+.carunlocked {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    width: 9%;
+    animation-name: myAnimation4;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myAnimation4 {
+    5% {
+        filter: brightness(130%);
+    }
+
+    10% {
+        filter: brightness(120%);
+    }
+
+    15% {
+        filter: brightness(110%);
+    }
+
+    20% {
+        filter: brightness(100%);
+    }
+
+    25% {
+        filter: brightness(90%);
+    }
+
+    30% {
+        filter: brightness(80%);
+    }
+
+    35% {
+        filter: brightness(90%);
+    }
+
+    40% {
+        filter: brightness(100%);
+    }
+
+    45% {
+        filter: brightness(110%);
+    }
+
+    50% {
+        filter: brightness(120%);
+    }
+
+    55% {
+        filter: brightness(130%);
+    }
+
+    60% {
+        filter: brightness(120%);
+    }
+
+    65% {
+        filter: brightness(110%);
+    }
+
+    70% {
+        filter: brightness(100%);
+    }
+
+    75% {
+        filter: brightness(90%);
+    }
+
+    80% {
+        filter: brightness(80%);
+    }
+
+    85% {
+        filter: brightness(90%);
+    }
+
+    90% {
+        filter: brightness(100%);
+    }
+
+    95% {
+        filter: brightness(110%);
+    }
+
+    100% {
+        filter: brightness(120%);
+    }
+}
+
+.popuptxt {
+    visibility: hidden;
+    width: 130px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    opacity: 50%;
+    position: relative;
+    position: fixed;
+    left: 77%;
+    top: 54%;
+}
+
+.car:hover .popuptxt {
+    visibility: visible;
+}
+
+/*radio button ow*/
+.radioow {
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radioow input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 27%;
+    left: 27%;
+    height: 25px;
+    width: 25px;
+    background-color: #1aff80;
+    box-shadow: 0 0 8px #1aff80;
+    border-radius: 50%;
+}
+
+.radioow:hover input~.checkmark {
+    background-color: #32ff9e;
+    box-shadow: 0 0 12px #32ff9e;
+}
+
+.radioow input:checked~.checkmark {
+    background-color: #00ff66;
+    box-shadow: 0 0 16px #00ff66;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radioow input:checked~.checkmark:after {
+    display: block;
+}
+
+.radioow .checkmark:after {
+    top: 35%;
+    left: 32%;
+    width: 33%;
+    height: 33%;
+    border-radius: 50%;
+    background: #1E2A1E;
+}
+
+/*radio fps*/
+.radiofps {
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radiofps input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmarkfps {
+    position: absolute;
+    top: 27%;
+    left: 27%;
+    height: 25px;
+    width: 25px;
+    background-color: #fd820f;
+    box-shadow: 0 0 8px #f7bc1a;
+    border-radius: 50%;
+}
+
+.radiofps:hover input~.checkmarkfps {
+    background-color: #fc6f2e;
+    box-shadow: 0 0 12px #ff3232;
+}
+
+.radiofps input:checked~.checkmarkfps {
+    background-color: #fd820f;
+    box-shadow: 0 0 16px #f7bc1a;
+}
+
+.checkmarkfps:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radiofps input:checked~.checkmarkfps:after {
+    display: block;
+}
+
+.radiofps .checkmarkfps:after {
+    top: 35%;
+    left: 32%;
+    width: 33%;
+    height: 33%;
+    border-radius: 50%;
+    background: #1E2A1E;
+}
+
+/*essais*/
+.essai1,
+.essai2,
+.essai3,
+.essai4,
+.essai5,
+.essai6,
+.essai7,
+.essai8,
+.essai9,
+.esai10,
+.essai11,
+.essai12,
+.essai13,
+.essai14,
+.essai15,
+.essai16,
+.essai17,
+.essai18,
+.essai19,
+.essai20,
+.essai21,
+.essai22,
+.essai23,
+.essai24,
+.essai25,
+.essai26,
+.essai27,
+.essai28,
+.essai29,
+.essai30,
+.essaij,
+.essair {
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 350%;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+}
+
+.essai1,
+.essai2,
+.essai3,
+.essai4,
+.essai5,
+.essai6,
+.essai7,
+.essai8,
+.essai9,
+.esai10,
+.essai11,
+.essai12,
+.essai13,
+.essai14,
+.essai15,
+.essai16,
+.essai17,
+.essai18,
+.essai19,
+.essai20,
+.essai21,
+.essai22,
+.essai23,
+.essai24,
+.essai25,
+.essai26,
+.essai27,
+.essai28,
+.essai29,
+.essai30
+{
+    color: #9aff8b;
+    text-shadow: 0 0 5px #9aff8b,
+        0 0 10px #00ff80,
+        0 0 20px #00ff80,
+        0 0 40px #00ff80;
+}
+
+.essaij {
+    color: #fff176;
+    text-shadow: 0 0 5px #fff176,
+        0 0 10px #ffeb3b,
+        0 0 20px #ffd54f,
+        0 0 40px #ffc107;
+}
+
+.essair {
+    color: #ff5b5b;
+    text-shadow: 0 0 5px #ff5b5b,
+        0 0 10px #ff2e2e,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
+}
+
+/*images questions*/
+.botw,
+.gta {
+    border-radius: 50%;
+    width: 10%;
+    border: solid 5px #1E2A1E;
+    box-shadow: 0 0 7px #91ff00;
+    transition: transform 1s;
+}
+
+.botw:hover,
+.gta:hover {
+    border-radius: 0%;
+    transform: scale(3);
+    border: solid 3px #1E2A1E;
+    box-shadow: 0 0 21px #91ff00;
+}
