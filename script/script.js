@@ -40,7 +40,7 @@ window.onload = function () {
   var bar = document.getElementById("barow");
   var pts = document.getElementById("ptsow");
   if (vie === 2) {
-    document.getElementById("coeur3").src = "../img/brokenheart.png"
+    document.getElementById("coeur3").src = "../img/brokenheart.png";
     if (bar && pts) {
       bar.style.width = widthow + "%";
       pts.innerHTML = widthow + " pts";
@@ -49,8 +49,8 @@ window.onload = function () {
 
   if (vie === 1) {
     document.getid
-    document.getElementById("coeur2").src = "../img/brokenheart.png"
-    document.getElementById("coeur3").src = "../img/brokenheart.png"
+    document.getElementById("coeur2").src = "../img/brokenheart.png";
+    document.getElementById("coeur3").src = "../img/brokenheart.png";
   }
 
   console.log("widthow =", widthow, "vie =", vie);
@@ -109,16 +109,16 @@ function validerow() {
       essai = 1
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionow)
+      essaitest.classList.add("essai" + questionow);
       owrestant -= 1;
       popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
-      sessionStorage.setItem("widthow", widthow)
+      sessionStorage.setItem("widthow", widthow);
       if (owrestant === 1) {
         popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (owrestant === 0) {
-        carimg = document.getElementById("carimg")
+        carimg = document.getElementById("carimg");
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
       }
@@ -127,20 +127,20 @@ function validerow() {
     else {
       widthow -= 5;
       vie -= 1;
-      sessionStorage.setItem("widthow", widthow)
-      sessionStorage.setItem("vie", vie)
+      sessionStorage.setItem("widthow", widthow);
+      sessionStorage.setItem("vie", vie);
       if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png"
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
 
       if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake"
-        document.getElementById("coeur2").src = "../img/brokenheart.png"
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
       }
 
       if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png"
-        window.location.href = "../view/gameover.html"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
 
       }
 
@@ -170,16 +170,16 @@ function validerow() {
     ) {
       scoreow += 10;
       widthow += 10;
-      document.getElementById("rnb").id = "questionfin"
+      document.getElementById("rnb").id = "questionfin";
       document.getElementById("myNav" + questionow).style.height = "0%";
       barow.style.width = widthow + "%";
       ptsow.innerHTML = widthow + " pts";
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionow)
-      essai = 1
+      essaitest.classList.add("essai" + questionow);
+      essai = 1;
       owrestant -= 1;
-      sessionStorage.setItem("widthow", widthow)
+      sessionStorage.setItem("widthow", widthow);
 
       popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
 
@@ -188,31 +188,31 @@ function validerow() {
       }
 
       if (owrestant === 0) {
-        carimg = document.getElementById("carimg")
+        carimg = document.getElementById("carimg");
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none"
+        popuptxt.style.display = "none";
       }
     }
 
     else {
       widthow -= 5;
       vie -= 1;
-      sessionStorage.setItem("widthow", widthow)
-      sessionStorage.setItem("vie", vie)
+      sessionStorage.setItem("widthow", widthow);
+      sessionStorage.setItem("vie", vie);
 
       if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png"
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
 
       if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake"
-        document.getElementById("coeur2").src = "../img/brokenheart.png"
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
       }
 
       if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png"
-        window.location.href = "../view/gameover.html"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
       }
 
       if (essai <= 2) essai++;
@@ -234,48 +234,48 @@ function validerow() {
     if (document.getElementById(questionow + "vrai").checked === true) {
       scoreow += 10;
       widthow += 10;
-      document.getElementById("rnb").id = "questionfin"
+      document.getElementById("rnb").id = "questionfin";
       document.getElementById("myNav" + questionow).style.height = "0%";
       barow.style.width = widthow + "%";
       ptsow.innerHTML = widthow + " pts";
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionow)
-      essai = 1
+      essaitest.classList.add("essai" + questionow);
+      essai = 1;
       owrestant -= 1;
       popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
-      sessionStorage.setItem("widthow", widthow)
+      sessionStorage.setItem("widthow", widthow);
 
       if (owrestant === 1) {
         popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (owrestant === 0) {
-        carimg = document.getElementById("carimg")
+        carimg = document.getElementById("carimg");
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none"
+        popuptxt.style.display = "none";
       }
     }
 
     else {
       widthow -= 5;
       vie -= 1;
-      sessionStorage.setItem("widthow", widthow)
-      sessionStorage.setItem("vie", vie)
+      sessionStorage.setItem("widthow", widthow);
+      sessionStorage.setItem("vie", vie);
 
       if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png"
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
 
       if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake"
-        document.getElementById("coeur2").src = "../img/brokenheart.png"
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
       }
 
       if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png"
-        window.location.href = "../view/gameover.html"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
 
       }
 
@@ -335,19 +335,19 @@ function validerfps() {
     ) {
       scorefps += 10;
       widthfps += 10;
-      document.getElementById("rnb").id = "questionfin"
+      document.getElementById("rnb").id = "questionfin";
       document.getElementById("myNav" + questionfps).style.height = "0%";
       barfps.style.width = widthfps + "%";
       ptsfps.innerHTML = widthfps + " pts";
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionfps)
-      essai = 1
+      essaitest.classList.add("essai" + questionfps);
+      essai = 1;
       fpsrestant -= 1;
       popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
       if (ptsfps === 100) {
-        ptsfps.style.right = "0%"
-        progressfps.style.right = "0%"
+        ptsfps.style.right = "0%";
+        progressfps.style.right = "0%";
       }
       if (fpsrestant === 1) {
         popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
@@ -357,7 +357,7 @@ function validerfps() {
         carimg = document.getElementById("carimg")
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none"
+        popuptxt.style.display = "none";
       }
     }
 
@@ -366,17 +366,17 @@ function validerfps() {
       vie -= 1;
 
       if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png"
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
 
       if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake"
-        document.getElementById("coeur2").src = "../img/brokenheart.png"
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
       }
 
       if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png"
-        window.location.href = "../view/gameover.html"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
 
       }
 
@@ -399,18 +399,18 @@ function validerfps() {
     if (document.getElementById(questionfps + "vrai").checked === true) {
       scorefps += 10;
       widthfps += 10;
-      document.getElementById("rnb").id = "questionfin"
+      document.getElementById("rnb").id = "questionfin";
       document.getElementById("myNav" + questionfps).style.height = "0%";
       barfps.style.width = widthfps + "%";
       ptsfps.innerHTML = widthfps + " pts";
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionfps)
-      essai = 1
+      essaitest.classList.add("essai" + questionfps);
+      essai = 1;
       fpsrestant -= 1;
       if (ptsfps === 100) {
-        ptsfps.style.right = "0%"
-        progressfps.style.right = "0%"
+        ptsfps.style.right = "0%";
+        progressfps.style.right = "0%";
       }
       popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
       if (fpsrestant === 1) {
@@ -421,7 +421,7 @@ function validerfps() {
         carimg = document.getElementById("carimg")
         carimg.classList.remove("carimg");
         carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none"
+        popuptxt.style.display = "none";
       }
     }
 
@@ -430,17 +430,17 @@ function validerfps() {
       vie -= 1;
 
       if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png"
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
 
       if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake"
-        document.getElementById("coeur2").src = "../img/brokenheart.png"
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
       }
 
       if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png"
-        window.location.href = "../view/gameover.html"
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
 
       }
 
@@ -459,11 +459,10 @@ function validerfps() {
     }
   }
 }
-
-// --- RESET COMPLET SI GAME OVER --- //
-if (window.location.href.includes("gameover")) {
+// Reset si Game Over
+if (window.location.href.includes("gameover.html")) {
   // Reset des variables principales
-  vie = 3;
+  vie = 0;
   scoreow = 0;
   scorefps = 0;
   scoremv = 0;
@@ -476,4 +475,7 @@ if (window.location.href.includes("gameover")) {
 
   // Reset du stockage
   sessionStorage.clear();
+}
+function rejouer(){
+  window.location.href = "../view/accueil.html";
 }

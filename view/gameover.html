@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
-    <a href="jeuow.html">test</a>
+<body onload="pagego()">
+    <div class="container">
+    <img class="coeur" id="coeur1" src="../img/heart.png" alt="coeur">
+    <img class="coeur" id="coeur2" src="../img/heart.png" alt="coeur">
+    <img class="coeur" id="coeur3" src="../img/heart.png" alt="coeur">
+    <div class="bars">
+      <div class="divow">
+        <div id="progressow"><div id="barow"></div></div>
+        <div class="ptsow"><p id="ptsow">0 pts</p></div>
+      </div>
+      <div class="divfps">
+        <div id="progressfps"><div id="barfps"></div></div>
+        <div class="ptsfps"><p id="ptsfps">0 pts</p></div>
+      </div>
+      <div class="divmv">
+        <div id="progressmv"><div id="barmv"></div></div>
+        <div class="ptsmv"><p id="ptsmv">0 pts</p></div>
+      </div>
+    </div>
+  </div>
+    <div>
+<h1 class="neon" data-text="U">G<span class="flicker-slow">A</span>ME<span class="flicker-fast">-</span>O<span class="flicker-slow">V</span>E<span class="flicker-fast">R</span></h1>
+</div>
+<div class="test">
+<button class="rejouer" onclick="rejouer()">Rejouer</button>
+</div>
 </body>
 <script src="../script/script.js"></script>
 </html>

@@ -20,9 +20,16 @@ body#accueil {
     color: #ffeb99;
 }
 
+
 .demarrer {
     display: flex;
     justify-content: center;
+}
+
+.test{
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
 }
 
 .button {
@@ -1188,3 +1195,114 @@ left: 25%;
   80% { transform: translate(1px, -2px) rotate(1deg); }
   100% { transform: translate(0px, 0px) rotate(0deg); }
 }
+body{
+  background: #000;
+}
+
+.neon {
+  font-family: 'Monoton', cursive;
+  font-size: 100px;
+  color: #FF4B4B;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: 400;
+  top: 30%;
+  left: 50%;
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 5px #FF4B4B,
+    0 0 10px #FF4B4B,
+    0 0 20px #FF0000,
+    0 0 40px #FF0000,
+    0 0 80px #FF0000,
+    0 0 120px #FF0000,
+    0 0 200px #FF0000;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+.flicker-slow {
+  animation: flicker 3s linear infinite;
+}
+
+.flicker-fast {
+  animation: flicker 1.2s linear infinite;
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 3px #FF4B4B,
+      0 0 6px #FF4B4B,
+      0 0 12px #FF0000,
+      0 0 25px #FF0000,
+      0 0 50px #FF0000,
+      0 0 80px #FF0000;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.25;
+    text-shadow: none;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow:
+      0 0 4px #FF4B4B,
+      0 0 15px #FF0000,
+      0 0 30px #FF0000,
+      0 0 60px #FF0000;
+  }
+  100% {
+    text-shadow:
+      0 0 8px #FF4B4B,
+      0 0 25px #FF0000,
+      0 0 50px #FF0000,
+      0 0 100px #FF0000;
+  }
+}
+
+.rejouer {
+  margin-top: 7%;
+  padding: 1.2% 3.5%;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-family: 'Fredoka', sans-serif;
+  color: #ffeaea;
+  background: linear-gradient(145deg, #b30000, #5a0000);
+  box-shadow:
+    0 0 10px #ff1a1a,
+    0 0 30px #b30000 inset,
+    0 0 20px rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.rejouer:hover {
+  opacity: 1;
+}
+
+.rejouer:hover {
+  transform: scale(1.08);
+  color: #fff5f5;
+  background: linear-gradient(145deg, #ff0000, #8a0a0a);
+  box-shadow:
+    0 0 20px #ff1a1a,
+    0 0 50px #ff0000,
+    0 0 80px #b30000 inset;
+}
+
+.rejouer:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 0 10px #b30000 inset,
+    0 0 25px #ff1a1a;
+}
+
+
