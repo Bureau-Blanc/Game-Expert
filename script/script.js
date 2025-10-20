@@ -30,7 +30,7 @@ function demarrer() {
 
 //fin du loading screen
 function chargement1() {
-    if (owrestant === 0) {
+  if (owrestant === 0) {
     window.location.href = "../view/jeufps.html";
   }
 }
@@ -54,8 +54,8 @@ window.onload = function () {
   }
 
   console.log("widthow =", widthow, "vie =", vie);
-        bar.style.width = widthow + "%";
-      pts.innerHTML = widthow + " pts";
+  bar.style.width = widthow + "%";
+  pts.innerHTML = widthow + " pts";
 };
 
 
@@ -127,6 +127,9 @@ function validerow() {
     else {
       widthow -= 5;
       vie -= 1;
+      if (widthow <= 0) {
+        widthow = 0;
+      }
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
       if (vie === 2) {
@@ -197,9 +200,15 @@ function validerow() {
 
     else {
       widthow -= 5;
+            if (widthow <= 0) {
+        widthow = 0;
+      }      
       vie -= 1;
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
+      if (widthow <= 0) {
+        widthow = 0;
+      }
 
       if (vie === 2) {
         document.getElementById("coeur3").src = "../img/brokenheart.png";
@@ -260,6 +269,9 @@ function validerow() {
 
     else {
       widthow -= 5;
+            if (widthow <= 0) {
+        widthow = 0;
+      }
       vie -= 1;
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
@@ -364,7 +376,9 @@ function validerfps() {
     else {
       widthfps -= 5;
       vie -= 1;
-
+      if (widthfps <= 0) {
+        widthfps = 0;
+      }
       if (vie === 2) {
         document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
@@ -426,9 +440,10 @@ function validerfps() {
     }
 
     else {
-      widthfps -= 5;
       vie -= 1;
-
+      if (widthfps <= 0) {
+        widthfps = 0;
+      }
       if (vie === 2) {
         document.getElementById("coeur3").src = "../img/brokenheart.png";
       }
@@ -446,6 +461,10 @@ function validerfps() {
 
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
+      widthfps -= 5;
+            if (widthfps <= 0) {
+        widthfps = 0;
+      }
 
       if (essai === 2) {
         essaitest.classList.remove("essai" + questionfps);
@@ -459,23 +478,19 @@ function validerfps() {
     }
   }
 }
-// Reset si Game Over
 if (window.location.href.includes("gameover.html")) {
-  // Reset des variables principales
+  let finalScore = 0;
+  finalScore += parseInt(sessionStorage.getItem("widthow")) || 0;
+  finalScore += parseInt(sessionStorage.getItem("widthfps")) || 0;
+  finalScore += parseInt(sessionStorage.getItem("widthmv")) || 0;
+  scorgo = document.getElementById("scorgo");
+  scorgo.innerHTML = "Tu as finis avec " + finalScore + " points/300";
   vie = 0;
-  scoreow = 0;
-  scorefps = 0;
-  scoremv = 0;
-  widthow = 0;
-  widthfps = 0;
-  widthmv = 0;
-  owrestant = 10;
-  fpsrestant = 10;
-  mvrestant = 10;
-
-  // Reset du stockage
-  sessionStorage.clear();
+  document.getElementById("coeur1").src = "../img/brokenheart.png";
+  document.getElementById("coeur2").src = "../img/brokenheart.png";
+  document.getElementById("coeur3").src = "../img/brokenheart.png";
 }
-function rejouer(){
+function rejouer() {
   window.location.href = "../view/accueil.html";
+  sessionStorage.clear();
 }
