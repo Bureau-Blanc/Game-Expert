@@ -52,7 +52,6 @@ window.onload = function () {
     document.getElementById("coeur2").src = "../img/brokenheart.png";
     document.getElementById("coeur3").src = "../img/brokenheart.png";
   }
-
   console.log("widthow =", widthow, "vie =", vie);
   bar.style.width = widthow + "%";
   pts.innerHTML = widthow + " pts";
@@ -127,9 +126,6 @@ function validerow() {
     else {
       widthow -= 5;
       vie -= 1;
-      if (widthow <= 0) {
-        widthow = 0;
-      }
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
       if (vie === 2) {
@@ -199,13 +195,10 @@ function validerow() {
     }
 
     else {
-      widthow -= 5;    
+      widthow -= 5;
       vie -= 1;
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
-      if (widthow <= 0) {
-        widthow = 0;
-      }
 
       if (vie === 2) {
         document.getElementById("coeur3").src = "../img/brokenheart.png";
@@ -223,11 +216,12 @@ function validerow() {
 
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
-
-      if (essai === 2) {
         essaitest.classList.remove("essai" + questionow);
         essaitest.classList.add("essaij");
+        
       }
+
+      if (essai === 2) {
 
       if (essai === 3) {
         essaitest.classList.remove("essaij");
@@ -266,9 +260,7 @@ function validerow() {
 
     else {
       widthow -= 5;
-            if (widthow <= 0) {
-        widthow = 0;
-      }
+
       vie -= 1;
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
@@ -374,7 +366,7 @@ function validerfps() {
     else {
       widthfps -= 5;
       vie -= 1;
-            sessionStorage.setItem("widthfps", widthfps);
+      sessionStorage.setItem("widthfps", widthfps);
       sessionStorage.setItem("vie", vie);
       if (widthfps <= 0) {
         widthfps = 0;
@@ -442,7 +434,7 @@ function validerfps() {
 
     else {
       vie -= 1;
-            sessionStorage.setItem("widthfps", widthfps);
+      sessionStorage.setItem("widthfps", widthfps);
       sessionStorage.setItem("vie", vie);
       if (widthfps <= 0) {
         widthfps = 0;
@@ -465,7 +457,7 @@ function validerfps() {
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
       widthfps -= 5;
-            if (widthfps <= 0) {
+      if (widthfps <= 0) {
         widthfps = 0;
       }
 
@@ -482,17 +474,43 @@ function validerfps() {
   }
 }
 if (window.location.href.includes("gameover.html")) {
-  let finalScore = 0;
-  finalScore += parseInt(sessionStorage.getItem("widthow")) || 0;
-  finalScore += parseInt(sessionStorage.getItem("widthfps")) || 0;
-  finalScore += parseInt(sessionStorage.getItem("widthmv")) || 0;
-  scorgo = document.getElementById("scorgo");
-  scorgo.innerHTML = "Tu as finis avec " + finalScore + " points/300";
-  vie = 0;
+
+  widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
+  widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
+  widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+
+  widthow = Math.max(0, widthow);
+  widthfps = Math.max(0, widthfps);
+  widthmv = Math.max(0, widthmv);
+
+  if (document.getElementById("barow")) {
+    document.getElementById("barow").style.width = widthow + "%";
+    document.getElementById("ptsow").innerHTML = widthow + " pts";
+  }
+  if (document.getElementById("barfps")) {
+    document.getElementById("barfps").style.width = widthfps + "%";
+    document.getElementById("ptsfps").innerHTML = widthfps + " pts";
+  }
+  if (document.getElementById("barmv")) {
+    document.getElementById("barmv").style.width = widthmv + "%";
+    document.getElementById("ptsmv").innerHTML = widthmv + " pts";
+  }
+
+  let finalScore = widthow + widthfps + widthmv;
+  let scorgo = document.getElementById("scorgo");
+  scorgo.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
+
+   vie = 0;
   document.getElementById("coeur1").src = "../img/brokenheart.png";
   document.getElementById("coeur2").src = "../img/brokenheart.png";
   document.getElementById("coeur3").src = "../img/brokenheart.png";
+
+  sessionStorage.setItem("widthow", widthow);
+  sessionStorage.setItem("widthfps", widthfps);
+  sessionStorage.setItem("widthmv", widthmv);
 }
+
+
 function rejouer() {
   window.location.href = "../view/accueil.html";
   sessionStorage.clear();
