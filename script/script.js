@@ -199,10 +199,7 @@ function validerow() {
     }
 
     else {
-      widthow -= 5;
-            if (widthow <= 0) {
-        widthow = 0;
-      }      
+      widthow -= 5;    
       vie -= 1;
       sessionStorage.setItem("widthow", widthow);
       sessionStorage.setItem("vie", vie);
@@ -354,6 +351,7 @@ function validerfps() {
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
       essaitest.classList.add("essai" + questionfps);
+      sessionStorage.setItem("widthfps", widthfps);
       essai = 1;
       fpsrestant -= 1;
       popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
@@ -376,6 +374,8 @@ function validerfps() {
     else {
       widthfps -= 5;
       vie -= 1;
+            sessionStorage.setItem("widthfps", widthfps);
+      sessionStorage.setItem("vie", vie);
       if (widthfps <= 0) {
         widthfps = 0;
       }
@@ -420,6 +420,7 @@ function validerfps() {
       essaitest.classList.remove("essaij");
       essaitest.classList.remove("essair");
       essaitest.classList.add("essai" + questionfps);
+      sessionStorage.setItem("widthfps", widthfps);
       essai = 1;
       fpsrestant -= 1;
       if (ptsfps === 100) {
@@ -441,6 +442,8 @@ function validerfps() {
 
     else {
       vie -= 1;
+            sessionStorage.setItem("widthfps", widthfps);
+      sessionStorage.setItem("vie", vie);
       if (widthfps <= 0) {
         widthfps = 0;
       }
