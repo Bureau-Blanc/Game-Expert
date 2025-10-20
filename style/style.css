@@ -634,8 +634,10 @@ body#accueil {
 }
 
 .cible12 {
-    left: 10%;
-    top: 70%;
+    left: 4%;
+    top: 85%;
+    rotate: -35deg;
+    width: 3%;
 }
 
 .cible13 {
@@ -644,8 +646,9 @@ body#accueil {
 }
 
 .cible14 {
-    top: 25%;
-left: 25%;
+    top: 28%;
+left: 24%;
+rotate: -20deg;
 }
 
 .cible15 {
@@ -666,11 +669,23 @@ left: 25%;
     width: 5%;
 }
 
-.cible18 {}
+.cible18 {
+left: 37%;
+top: 27%;
+rotate: -9deg;
+}
 
-.cible19 {}
+.cible19 {
+top: 81.4%;
+left: 14.4%;
+rotate: -58deg;
+width: 2%;
+}
 
-.cible20 {}
+.cible20 {
+    top: 25%;
+    width: 3%;
+}
 
 .cible21 {}
 
