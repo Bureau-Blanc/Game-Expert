@@ -876,7 +876,29 @@ body#accueil {
     animation-duration: 5s;
     animation-iteration-count: infinite;
 }
+.carimg2 {
+    width: 400%;
+    filter: brightness(20%);
+}
 
+.car2 {
+    position: relative;
+    position: fixed;
+    width: 1.6%;
+    cursor: not-allowed;
+    top: 16%;
+    left: 45%;
+}
+
+.carunlocked2 {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    width: 6.3%;
+    animation-name: myAnimation4;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
 @keyframes myAnimation4 {
     5% {
         filter: brightness(130%);
@@ -976,10 +998,29 @@ body#accueil {
     top: 54%;
 }
 
+.car2:hover .popuptxt2 {
+    visibility: visible;
+}
+.popuptxt2 {
+    visibility: hidden;
+    width: 130px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    opacity: 50%;
+    position: relative;
+    position: fixed;
+    left: 45.2%;
+    top: 4%;
+}
+
 .car:hover .popuptxt {
     visibility: visible;
 }
-
 /*radio button ow*/
 .radioow {
     position: relative;
@@ -1084,6 +1125,54 @@ body#accueil {
 }
 
 .radiofps .checkmarkfps:after {
+    top: 35%;
+    left: 32%;
+    width: 33%;
+    height: 33%;
+    border-radius: 50%;
+    background: #1E2A1E;
+}
+/*radio mv*/
+.radiomv {
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.radiomv input {
+    position: absolute;
+    opacity: 0;
+}
+.checkmarkmv {
+    position: absolute;
+    top: 27%;
+    left: 27%;
+    height: 25px;
+    width: 25px;
+    background-color: #00c8ff;
+    box-shadow: 0 0 8px #00c8ff;
+    border-radius: 50%;
+}
+.radiomv:hover input~.checkmarkmv {
+    background-color: #32d4ff;
+    box-shadow: 0 0 12px #32d4ff;
+}
+.radiomv input:checked~.checkmarkmv {
+    background-color: #00aaff;
+    box-shadow: 0 0 16px #00aaff;
+}
+.checkmarkmv:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.radiomv input:checked~.checkmarkmv:after {
+    display: block;
+}
+.radiomv .checkmarkmv:after {
     top: 35%;
     left: 32%;
     width: 33%;
@@ -1370,4 +1459,75 @@ margin-bottom: -20%;
 font-size: 300%;
 font-family: 'Fredoka', sans-serif;
 font-weight: 501;
+}
+/*mv*/
+.jeumv {
+    background-image: url(../img/jeumv.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+    background-position-y: 30%;
+}
+.h1mv {
+    margin-top: -3%;
+    text-align: center;
+    font-size: 350%;
+    text-shadow: 0 0 7px #00c8ff;
+    color: #00aaff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+}
+
+.h2mv {
+    text-align: center;
+    font-size: 275%;
+    text-shadow: 0 0 7px #00c8ff;
+    color: #0099cc;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+    margin-top: 2.4%;
+}
+
+.pmv {
+    text-align: left;
+    margin-left: 30%;
+    font-size: 180%;
+    text-shadow: 0 0 7px #00c8ff;
+    color: #66ccff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 550;
+    margin-top: 0;
+}
+
+.validermv {
+    border-radius: 5%;
+    font-size: 190%;
+    box-shadow: 0 0 7px #00c8ff;
+    font-weight: 600;
+    color: #00e0ff;
+    background: #001f2f;
+    border: solid 1px #00c8ff;
+    padding: 1% 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.validermv:hover {
+    transform: scale(1.3);
+}
+.imgmv {
+    border-radius: 50%;
+    width: 10%;
+    margin-top: 20%;
+    border: solid 5px #005f8f;
+    box-shadow: 0 0 7px #00c8ff;
+    transition: transform 0.5s;
+    margin-inline: auto;
+}
+.imgmv:hover {
+    transform: scale(1.5);
 }
