@@ -20,9 +20,16 @@ body#accueil {
     color: #ffeb99;
 }
 
+
 .demarrer {
     display: flex;
     justify-content: center;
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
 }
 
 .button {
@@ -58,6 +65,7 @@ body#accueil {
     padding: 0;
     font-family: 'Fredoka', sans-serif;
 }
+
 .jeufps {
     background-image: url(../img/jeufps.png);
     background-size: cover;
@@ -67,6 +75,7 @@ body#accueil {
     padding: 0;
     font-family: 'Fredoka', sans-serif;
 }
+
 /*Questions*/
 .coeur {
     width: 5%;
@@ -233,7 +242,8 @@ body#accueil {
 }
 
 /*logo fps*/
-.logo, .cs2 {
+.logo,
+.cs2 {
     margin-top: 20%;
     border-radius: 50%;
     width: 10%;
@@ -245,16 +255,20 @@ body#accueil {
 .logo:hover {
     transform: scale(1.5);
 }
-.miramar{
+
+.miramar {
     margin-top: 17%;
     border-radius: 50%;
     width: 15%;
     transition: transform 0.5s;
     margin-bottom: -2%;
 }
-.miramar:hover, .cs2:hover{
-       transform: scale(2.5);
+
+.miramar:hover,
+.cs2:hover {
+    transform: scale(2.5);
 }
+
 /*overlay fps*/
 .divfps {
     justify-content: center;
@@ -627,8 +641,10 @@ body#accueil {
 }
 
 .cible12 {
-    left: 10%;
-    top: 70%;
+    left: 4%;
+    top: 85%;
+    rotate: -35deg;
+    width: 3%;
 }
 
 .cible13 {
@@ -637,8 +653,9 @@ body#accueil {
 }
 
 .cible14 {
-    top: 25%;
-left: 25%;
+    top: 28%;
+    left: 24%;
+    rotate: -20deg;
 }
 
 .cible15 {
@@ -659,11 +676,23 @@ left: 25%;
     width: 5%;
 }
 
-.cible18 {}
+.cible18 {
+    left: 37%;
+    top: 27%;
+    rotate: -9deg;
+}
 
-.cible19 {}
+.cible19 {
+    top: 81.4%;
+    left: 14.4%;
+    rotate: -58deg;
+    width: 2%;
+}
 
-.cible20 {}
+.cible20 {
+    top: 25%;
+    width: 3%;
+}
 
 .cible21 {}
 
@@ -768,7 +797,6 @@ left: 25%;
 .ptsfps {
     text-shadow: 0 0 7px #ff0000;
     color: #ffb8b8;
-
 }
 
 .ptsmv {
@@ -1133,8 +1161,7 @@ left: 25%;
 .essai27,
 .essai28,
 .essai29,
-.essai30
-{
+.essai30 {
     color: #9aff8b;
     text-shadow: 0 0 5px #9aff8b,
         0 0 10px #00ff80,
@@ -1174,4 +1201,173 @@ left: 25%;
     transform: scale(3);
     border: solid 3px #1E2A1E;
     box-shadow: 0 0 21px #91ff00;
+}
+
+#coeurShake {
+    animation: shake 0.4s infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(-2px, 1px) rotate(-2deg);
+    }
+
+    40% {
+        transform: translate(2px, -1px) rotate(2deg);
+    }
+
+    60% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(1px, -2px) rotate(1deg);
+    }
+
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+body {
+    background: #000;
+}
+
+.neon {
+    font-family: 'Monoton', cursive;
+    font-size: 100px;
+    color: #FF4B4B;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-weight: 400;
+    top: 30%;
+    left: 50%;
+    letter-spacing: 8px;
+    text-shadow:
+        0 0 5px #FF4B4B,
+        0 0 10px #FF4B4B,
+        0 0 20px #FF0000,
+        0 0 40px #FF0000,
+        0 0 80px #FF0000,
+        0 0 120px #FF0000,
+        0 0 200px #FF0000;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.flicker-slow {
+    animation: flicker 3s linear infinite;
+}
+
+.flicker-fast {
+    animation: flicker 1.2s linear infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    19.999%,
+    22%,
+    62.999%,
+    64%,
+    64.999%,
+    70%,
+    100% {
+        opacity: 1;
+        text-shadow:
+            0 0 3px #FF4B4B,
+            0 0 6px #FF4B4B,
+            0 0 12px #FF0000,
+            0 0 25px #FF0000,
+            0 0 50px #FF0000,
+            0 0 80px #FF0000;
+    }
+
+    20%,
+    21.999%,
+    63%,
+    63.999%,
+    65%,
+    69.999% {
+        opacity: 0.25;
+        text-shadow: none;
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        text-shadow:
+            0 0 4px #FF4B4B,
+            0 0 15px #FF0000,
+            0 0 30px #FF0000,
+            0 0 60px #FF0000;
+    }
+
+    100% {
+        text-shadow:
+            0 0 8px #FF4B4B,
+            0 0 25px #FF0000,
+            0 0 50px #FF0000,
+            0 0 100px #FF0000;
+    }
+}
+
+.rejouer {
+    margin-top: 7%;
+    padding: 1.2% 3.5%;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    color: #ffeaea;
+    background: linear-gradient(145deg, #b30000, #5a0000);
+    box-shadow:
+        0 0 10px #ff1a1a,
+        0 0 30px #b30000 inset,
+        0 0 20px rgba(255, 0, 0, 0.3);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.rejouer:hover {
+    opacity: 1;
+}
+
+.rejouer:hover {
+    transform: scale(1.08);
+    color: #fff5f5;
+    background: linear-gradient(145deg, #ff0000, #8a0a0a);
+    box-shadow:
+        0 0 20px #ff1a1a,
+        0 0 50px #ff0000,
+        0 0 80px #b30000 inset;
+}
+
+.rejouer:active {
+    transform: scale(0.96);
+    box-shadow:
+        0 0 10px #b30000 inset,
+        0 0 25px #ff1a1a;
+}
+.pgo{
+    color: #ff3c3c;
+text-shadow:
+  0 0 5px #ff1a1a,
+  0 0 10px #ff1a1a,
+  0 0 10px #ff1a1a,
+  0 0 40px #ff0000;
+text-align: center;
+margin-top: 20%;
+margin-bottom: -20%;
+font-size: 300%;
+font-family: 'Fredoka', sans-serif;
+font-weight: 501;
 }
