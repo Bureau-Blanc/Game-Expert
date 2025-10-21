@@ -24,14 +24,20 @@ let listfps = ["11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];  //l
 let listmv = ["21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];  //liste questions mv
 var progressfps = document.getElementById("progressfps");  //pour changer le style de progressfps
 //démarre le jeu
+
+
 function demarrer() {
   window.location.href = "../view/jeuow.html";
 }
 
-//fin du loading screen
 function chargement1() {
   if (owrestant === 0) {
     window.location.href = "../view/jeufps.html";
+  }
+}
+function chargement2() {
+  if (fpsrestant === 0) {
+    window.location.href = "../view/jeumv.html";
   }
 }
 window.onload = function () {
@@ -346,20 +352,20 @@ function validerfps() {
       sessionStorage.setItem("widthfps", widthfps);
       essai = 1;
       fpsrestant -= 1;
-      popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
+      popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
       if (ptsfps === 100) {
         ptsfps.style.right = "0%";
         progressfps.style.right = "0%";
       }
       if (fpsrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
+        popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (fpsrestant === 0) {
-        carimg = document.getElementById("carimg")
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none";
+        carimg2 = document.getElementById("carimg2")
+        carimg2.classList.remove("carimg2");
+        carimg2.classList.add("carunlocked2");
+        popuptxt2.style.display = "none";
       }
     }
 
@@ -419,16 +425,16 @@ function validerfps() {
         ptsfps.style.right = "0%";
         progressfps.style.right = "0%";
       }
-      popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
+      popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
       if (fpsrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
+        popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (fpsrestant === 0) {
-        carimg = document.getElementById("carimg")
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none";
+        carimg2 = document.getElementById("carimg2")
+        carimg2.classList.remove("carimg2");
+        carimg2.classList.add("carunlocked2");
+        popuptxt2.style.display = "none";
       }
     }
 
@@ -463,6 +469,239 @@ function validerfps() {
 
       if (essai === 2) {
         essaitest.classList.remove("essai" + questionfps);
+        essaitest.classList.add("essaij");
+      }
+
+      if (essai === 3) {
+        essaitest.classList.remove("essaij");
+        essaitest.classList.add("essair");
+      }
+    }
+  }
+}
+
+//mv
+//choisis un question mv aléatoire
+function questionsmv(clicked_id) {
+  document.getElementById(clicked_id).id = "rnb";
+
+  if (listmv.length === 0) {
+    console.log("Toutes les questions ont déjà été utilisées !");
+    return;
+  }
+
+  var randomIndex = Math.floor(Math.random() * listmv.length);
+  questionmv = parseInt(listmv[randomIndex]);
+  listmv.splice(randomIndex, 1);
+  console.log("Question :", questionmv);
+  var element = document.getElementById("myNav" + questionmv);
+
+  if (element) {
+    element.style.height = "100%";
+  }
+  else {
+    console.warn("Élément introuvable : myNav" + questionmv);
+  }
+  return questionmv;
+}
+
+
+//valide la réponse
+function validermv() {
+  var essaitest = document.getElementById("essai" + questionmv);  //nombre d'essais
+  //question mv 22
+  if (questionmv === 22) {
+    var input22 = document.getElementById("input22").value;
+    var rep22 = input22.toLowerCase();
+    if (
+      rep22 === "metroid" ||
+      rep22 === "castlevania" 
+    ) {
+      scoremv += 10;
+      widthmv += 10;
+      barmv.style.width = widthmv + "%";
+      ptsmv.innerHTML = widthmv + " pts";
+      document.getElementById("myNav" + questionmv).style.height = "0%";
+      document.getElementById("rnb").id = "questionfin";
+      essai = 1
+      essaitest.classList.remove("essaij");
+      essaitest.classList.remove("essair");
+      essaitest.classList.add("essai" + questionmv);
+      mvrestant -= 1;
+      popuptxt.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+      sessionStorage.setItem("widthmv", widthmv);
+      if (mvrestant === 1) {
+        popuptxt.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
+      }
+
+      if (mvrestant === 0) {
+        carimg = document.getElementById("carimg");
+        carimg.classList.remove("carimg");
+        carimg.classList.add("carunlocked");
+      }
+    }
+
+    else {
+      widthmv -= 5;
+      vie -= 1;
+      sessionStorage.setItem("widthmv", widthmv);
+      sessionStorage.setItem("vie", vie);
+      if (vie === 2) {
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
+      }
+
+      if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
+      }
+
+      if (vie === 0) {
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
+
+      }
+
+      if (essai <= 2) essai++;
+      essaitest.innerHTML = "Essai n°" + essai + "/3";
+
+
+      if (essai === 2) {
+        essaitest.classList.remove("essai" + questionmv);
+        essaitest.classList.add("essaij");
+      }
+
+      if (essai === 3) {
+        essaitest.classList.remove("essaij");
+        essaitest.classList.add("essair");
+      }
+    }
+  }
+  //question mv 30
+  if (questionmv === 30) {
+    var input30 = document.getElementById("input30").value;
+    var rep30 = input30.toLowerCase();
+    if (
+      rep30 === "samus" ||
+      rep30 === "samus aran" 
+    ) {
+      scoremv += 10;
+      widthmv += 10;
+      document.getElementById("rnb").id = "questionfin";
+      document.getElementById("myNav" + questionmv).style.height = "0%";
+      barmv.style.width = widthmv + "%";
+      ptsmv.innerHTML = widthmv + " pts";
+      essaitest.classList.remove("essaij");
+      essaitest.classList.remove("essair");
+      essaitest.classList.add("essai" + questionmv);
+      essai = 1;
+      mvrestant -= 1;
+      sessionStorage.setItem("widthmv", widthmv);
+
+      popuptxt.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+
+      if (mvrestant === 1) {
+        popuptxt.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
+      }
+
+      if (mvrestant === 0) {
+        carimg = document.getElementById("carimg");
+        carimg.classList.remove("carimg");
+        carimg.classList.add("carunlocked");
+        popuptxt.style.display = "none";
+      }
+    }
+
+    else {
+      widthmv -= 5;
+      vie -= 1;
+      sessionStorage.setItem("widthmv", widthmv);
+      sessionStorage.setItem("vie", vie);
+
+      if (vie === 2) {
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
+      }
+
+      if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
+      }
+
+      if (vie === 0) {
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
+      }
+
+      if (essai <= 2) essai++;
+      essaitest.innerHTML = "Essai n°" + essai + "/3";
+        essaitest.classList.remove("essai" + questionmv);
+        essaitest.classList.add("essaij");
+        
+      }
+
+      if (essai === 2) {
+
+      if (essai === 3) {
+        essaitest.classList.remove("essaij");
+        essaitest.classList.add("essair");
+      }
+    }
+  }
+  //autres questions
+  else {
+    if (document.getElementById(questionmv + "vrai").checked === true) {
+      scoremv += 10;
+      widthmv += 10;
+      document.getElementById("rnb").id = "questionfin";
+      document.getElementById("myNav" + questionmv).style.height = "0%";
+      barmv.style.width = widthmv + "%";
+      ptsmv.innerHTML = widthmv + " pts";
+      essaitest.classList.remove("essaij");
+      essaitest.classList.remove("essair");
+      essaitest.classList.add("essai" + questionmv);
+      essai = 1;
+      mvrestant -= 1;
+      popuptxt.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+      sessionStorage.setItem("widthmv", widthmv);
+
+      if (mvrestant === 1) {
+        popuptxt.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
+      }
+
+      if (mvrestant === 0) {
+        carimg = document.getElementById("carimg");
+        carimg.classList.remove("carimg");
+        carimg.classList.add("carunlocked");
+        popuptxt.style.display = "none";
+      }
+    }
+
+    else {
+      widthmv -= 5;
+
+      vie -= 1;
+      sessionStorage.setItem("widthmv", widthmv);
+      sessionStorage.setItem("vie", vie);
+
+      if (vie === 2) {
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
+      }
+
+      if (vie === 1) {
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
+      }
+
+      if (vie === 0) {
+        document.getElementById("coeurShake").src = "../img/brokenheart.png";
+        window.location.href = "../view/gameover.html";
+
+      }
+
+      if (essai <= 2) essai++;
+      essaitest.innerHTML = "Essai n°" + essai + "/3";
+
+      if (essai === 2) {
+        essaitest.classList.remove("essai" + questionmv);
         essaitest.classList.add("essaij");
       }
 
@@ -514,4 +753,112 @@ if (window.location.href.includes("gameover.html")) {
 function rejouer() {
   window.location.href = "../view/accueil.html";
   sessionStorage.clear();
+}
+  let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  let konamiPosition = 0;
+  document.addEventListener('keydown', function(e) {
+    if (e.key === konamiCode[konamiPosition]) {
+      konamiPosition++;
+      if (konamiPosition === konamiCode.length) {
+        konamiPosition = 0;
+        cheat();
+      }
+    } else {
+      konamiPosition = 0;
+    }
+  });
+    let basiccheat = ['c', 'h', 'e', 'a', 't'];
+  let basicPosition = 0;
+  document.addEventListener('keydown', function(e) {
+    if (e.key === basiccheat[basicPosition]) {
+      basicPosition++;
+      if (basicPosition === basiccheat.length) {
+        basicPosition = 0;
+        cheat();
+      }
+    } else {
+      basicPosition = 0;
+    }});
+function cheat() {
+  if (window.location.href.includes("ow.html")) {
+    widthow = 100;
+    barow.style.width = widthow + "%";
+    ptsow.innerHTML = widthow + " pts";
+    sessionStorage.setItem("widthow", widthow);
+    owrestant = 0;
+    popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
+    carimg = document.getElementById("carimg");
+    carimg.classList.remove("carimg");
+    carimg.classList.add("carunlocked");
+    vie = 3;
+    document.getElementById("coeur1").src = "../img/heart.png";
+    document.getElementById("coeur2").src = "../img/heart.png";
+    document.getElementById("coeur3").src = "../img/heart.png";
+  }
+  else if (window.location.href.includes("fps.html")) {
+        widthow = 100;
+    barow.style.width = widthow + "%";
+    ptsow.innerHTML = widthow + " pts";
+    sessionStorage.setItem("widthow", widthow);
+    widthfps = 100;
+    barfps.style.width = widthfps + "%";
+    ptsfps.innerHTML = widthfps + " pts";
+    sessionStorage.setItem("widthfps", widthfps);
+    fpsrestant = 0;
+    popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
+    carimg2 = document.getElementById("carimg2")
+    carimg2.classList.remove("carimg2");
+    carimg2.classList.add("carunlocked2");
+    vie = 3;
+    document.getElementById("coeur1").src = "../img/heart.png";
+    document.getElementById("coeur2").src = "../img/heart.png";
+    document.getElementById("coeur3").src = "../img/heart.png";
+  }
+  else if (window.location.href.includes("mv.html")) {
+        widthow = 100;
+    barow.style.width = widthow + "%";
+    ptsow.innerHTML = widthow + " pts";
+    sessionStorage.setItem("widthow", widthow);
+    widthfps = 100;
+    barfps.style.width = widthfps + "%";
+    ptsfps.innerHTML = widthfps + " pts";
+    sessionStorage.setItem("widthfps", widthfps);
+    widthmv = 100;
+    barmv.style.width = widthmv + "%";
+    ptsmv.innerHTML = widthmv + " pts";
+    sessionStorage.setItem("widthmv", widthmv);
+    mvrestant = 0;
+    popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+    carimg3 = document.getElementById("carimg3")
+    carimg3.classList.remove("carimg3");
+    carimg3.classList.add("carunlocked3");
+    vie = 3;
+    document.getElementById("coeur1").src = "../img/heart.png";
+    document.getElementById("coeur2").src = "../img/heart.png";
+    document.getElementById("coeur3").src = "../img/heart.png";
+}
+if (window.location.href.includes("gameover.html")) {
+window.location.href = "../view/victoire.html";
+        widthow = 100;
+    barow.style.width = widthow + "%";
+    ptsow.innerHTML = widthow + " pts";
+    sessionStorage.setItem("widthow", widthow);
+    widthfps = 100;
+    barfps.style.width = widthfps + "%";
+    ptsfps.innerHTML = widthfps + " pts";
+    sessionStorage.setItem("widthfps", widthfps);
+    widthmv = 100;
+    barmv.style.width = widthmv + "%";
+    ptsmv.innerHTML = widthmv + " pts";
+    sessionStorage.setItem("widthmv", widthmv);
+    mvrestant = 0;
+    popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+    carimg3 = document.getElementById("carimg3")
+    carimg3.classList.remove("carimg3");
+    carimg3.classList.add("carunlocked3");
+    vie = 3;
+    document.getElementById("coeur1").src = "../img/heart.png";
+    document.getElementById("coeur2").src = "../img/heart.png";
+    document.getElementById("coeur3").src = "../img/heart.png";
+}
 }
