@@ -739,7 +739,7 @@ if (window.location.href.includes("gameover.html")) {
   let scorgo = document.getElementById("scorgo");
   scorgo.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
 
-   vie = 0;
+  vie = 0;
   document.getElementById("coeur1").src = "../img/brokenheart.png";
   document.getElementById("coeur2").src = "../img/brokenheart.png";
   document.getElementById("coeur3").src = "../img/brokenheart.png";

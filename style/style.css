@@ -197,9 +197,9 @@ body#accueil {
 
 /*fps*/
 .h1fps {
-    margin-top: -4%;
+    margin-top: -7%;
     text-align: center;
-    font-size: 350%;
+    font-size: 300%;
     text-shadow: 0 0 7px #ff0000;
     color: #e45937;
     font-family: 'Fredoka', sans-serif;
@@ -208,23 +208,26 @@ body#accueil {
 
 .h2fps {
     text-align: center;
-    font-size: 275%;
+    font-size: 220%;
     text-shadow: 0 0 7px #ff0000;
     color: #ef944a;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
-    margin-top: 2.4%;
+    margin-top: 1%;
+    max-width: 63%;
+    margin-left: 20%;
 }
 
 .pfps {
     text-align: left;
     margin-left: 30%;
-    font-size: 180%;
+    font-size: 130%;
     text-shadow: 0 0 7px #ff3c00;
     color: #e7db2e;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     margin-top: 0;
+    max-width: 50%;
 }
 
 .validerfps {
@@ -244,12 +247,12 @@ body#accueil {
 /*logo fps*/
 .logo,
 .cs2 {
-    margin-top: 20%;
     border-radius: 50%;
-    width: 10%;
-    border: solid 5px #ff7b0f;
+    width: 9%;
+    border: solid 4px #ff7b0f;
     box-shadow: 0 0 10px #f0974f;
     transition: transform 0.5s;
+    margin-top: -2%;
 }
 
 .logo:hover {
@@ -257,7 +260,7 @@ body#accueil {
 }
 
 .miramar {
-    margin-top: 17%;
+    margin-top: -2.7%;
     border-radius: 50%;
     width: 15%;
     transition: transform 0.5s;
@@ -694,25 +697,55 @@ body#accueil {
     width: 3%;
 }
 
-.cible21 {}
+.cible21 {
+    top: 10%;
+    left: 27%;
+}
 
-.cible22 {}
+.cible22 {
+    top: 40%;
+    left: 5%;
+}
 
-.cible23 {}
+.cible23 {
+    top: 30%;
+    left: 85%;
+}
 
-.cible24 {}
+.cible24 {
+    top: 75%;
+    left: 20%;
+}
 
-.cible25 {}
+.cible25 {
+    top:  5%;
+    left: 48.2%;
+}
 
-.cible26 {}
+.cible26 {
+    top: 15%;
+    left: 70%;
+}
 
-.cible27 {}
+.cible27 {
+    top: 57%;
+    left: 67%;
+}
 
-.cible28 {}
+.cible28 {
+    top: 80%;
+    left: 10%;
+}
 
-.cible29 {}
+.cible29 {  
+    top: 85%;
+    left: 80%;
+}
 
-.cible30 {}
+.cible30 {
+    top: 35%;
+    left: 15%;
+}
 
 /*Progress bars*/
 .bars {
@@ -724,25 +757,14 @@ body#accueil {
     gap: 10px;
 }
 
-.divow,
-.divfps,
-.divmv {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: -20%;
-}
-
-.divow {
-    margin-top: -8%;
-}
-
 #progressow,
 #progressfps,
 #progressmv {
     width: 170px;
-    height: 25px;
+    height: 21px;
     background-color: black;
+    margin-top: 8.3%;
+    margin-left: -62%;
 }
 
 #progressow {
@@ -762,6 +784,7 @@ body#accueil {
 #barmv {
     height: 100%;
     width: 0%;
+
 }
 
 #barow {
@@ -786,12 +809,13 @@ body#accueil {
     font-size: 200%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
+    margin-top: -27%;
 }
 
 #ptsow {
     text-shadow: 0 0 7px #91ff00;
     color: #B8FFC9;
-
+margin-top: 10%;
 }
 
 .ptsfps {
@@ -1530,4 +1554,7 @@ font-weight: 501;
 }
 .imgmv:hover {
     transform: scale(1.5);
+}
+.go{
+    background: radial-gradient(circle, #000000, #2f0000);
 }
