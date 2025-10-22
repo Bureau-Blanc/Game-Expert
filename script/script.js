@@ -41,6 +41,13 @@ function chargement2() {
     window.location.href = "../view/jeumv.html";
   }
 }
+function chargement3() {
+  if (mvrestant === 0) {
+    window.location.href = "../view/victoire.html";
+  }
+}
+
+//charge la page avec les bonnes valeurs
 window.onload = function () {
   let widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
   let widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
@@ -69,9 +76,8 @@ window.onload = function () {
   }
 
   if (vie === 1) {
-    document.getid
-    document.getElementById("coeur2").src = "../img/brokenheart.png";
-    document.getElementById("coeur3").src = "../img/brokenheart.png";
+        document.getElementById("coeur1").id = "coeurShake";
+        document.getElementById("coeur2").src = "../img/brokenheart.png";
   }
   console.log("widthow =", widthow, "vie =", vie);
   bar.style.width = widthow + "%";
@@ -764,7 +770,6 @@ if (window.location.href.includes("gameover.html")) {
   sessionStorage.setItem("widthmv", widthmv);
 }
 
-
 function rejouer() {
   window.location.href = "../view/accueil.html";
   sessionStorage.clear();
@@ -855,6 +860,7 @@ function cheat() {
     document.getElementById("coeur2").src = "../img/heart.png";
     document.getElementById("coeur3").src = "../img/heart.png";
 }
+
 if (window.location.href.includes("gameover.html")) {
 window.location.href = "../view/victoire.html";
         widthow = 100;
@@ -880,3 +886,4 @@ window.location.href = "../view/victoire.html";
     document.getElementById("coeur3").src = "../img/heart.png";
 }
 }
+
