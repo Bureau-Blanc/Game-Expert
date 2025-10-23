@@ -36,14 +36,27 @@
       <p id="ptsmv" class="ptsmv">0 pts</p>
     </span>
   </span>
-<body class="bodyvictoire">
   <div class="wrapper">
     <div class="bg">Victoire</div>
     <div class="fg">Victoire</div>
-<div onclick="rejouer()" class="btn-wrapper">
-  <button class="under-btn">REJOUER</button>
-  <button class="gold-btn">REJOUER</button>
-</div>
+    <div onclick="rejouer()" class="btn-wrapper">
+      <button class="under-btn">REJOUER</button>
+      <button class="gold-btn">REJOUER</button>
+    </div>
+  </div>
+  <div onclick="stats()">
+  <button class="stats" id="stats">Statistiques</button>
+  </div>
+  <div class="overlayVictoire" id="MyNavVictoire">
+    <div class="containerv">
+<p onclick="closeoverlay()" class="close">x</p>
+    <p class="victoire2" id="score">a</p>
+        <p class="victoire3" id="bestof3">a</p>
+        <div class="div-MeilleurScore">
+    <p class="victoire1">Meilleur score:</p>
+    <p class="MeilleurScore" id="bestscorev">a</p>
+    </div>
+    </div>
   </div>
 </body>
 <script src="../script/script.js"></script>

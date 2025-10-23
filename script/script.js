@@ -49,16 +49,16 @@ function chargement3() {
 
 //charge la page avec les bonnes valeurs
 window.onload = function () {
-  let widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
-  let widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
-  let widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+   widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
+   widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
+   widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
   var bar = document.getElementById("barow");
   var barfps = document.getElementById("barfps");
   var barmv = document.getElementById("barmv");
   var pts = document.getElementById("ptsow");
   var ptsfps = document.getElementById("ptsfps");
   var ptsmv = document.getElementById("ptsmv");
-  let vie = parseInt(sessionStorage.getItem("vie")) || 3;
+   vie = parseInt(sessionStorage.getItem("vie")) || 3;
   if (bar && pts) {
     bar.style.width = widthow + "%";
     pts.innerHTML = widthow + " pts";
@@ -79,8 +79,6 @@ window.onload = function () {
   if (vie === 1) {
     document.getElementById("coeur1").id = "coeurShake";
     document.getElementById("coeur2").src = "../img/brokenheart.png";
-    document.getElementById("coeur3").src = "../img/brokenheart.png";
-    parseInt(sessionStorage.setItem("vie", 1));
   }
   console.log("widthow =", widthow, "vie =", vie);
   bar.style.width = widthow + "%";
@@ -170,7 +168,6 @@ function validerow() {
       if (vie === 0) {
         document.getElementById("coeurShake").src = "../img/brokenheart.png";
         window.location.href = "../view/gameover.html";
-
       }
 
       if (essai <= 2) essai++;
@@ -736,6 +733,7 @@ function validermv() {
     }
   }
 }
+//game-over
 if (window.location.href.includes("gameover.html")) {
 
   widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
@@ -758,22 +756,47 @@ if (window.location.href.includes("gameover.html")) {
     document.getElementById("barmv").style.width = widthmv + "%";
     document.getElementById("ptsmv").innerHTML = widthmv + " pts";
   }
-
+   bestscore = localStorage.getItem("bestscore") || 0;
   let finalScore = widthow + widthfps + widthmv;
-  let scorgo = document.getElementById("scorgo");
-  scorgo.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
   if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
-    console.log("hey")
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie Open World avec " + widthow + "/100"
   }
-  if (widthfps >= widthow + 1 && widthmv + 1) {
-    console.log("hi")
+  if (widthfps >= widthow + 1 && widthfps >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie FPS avec " + widthfps + "pts/100"
   }
-  if (widthmv >= widthow + 1 && widthfps + 1) {
-    console.log("hello")
+  if (widthmv >= widthow + 1 && widthmv >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie MetroidVania avec " + widthmv + "pts/100"
   }
-  else {
-    console.log("égalité")
+  if (finalScore === 300) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Bravo tu as répondu correctement à toutes les questions sans fautes !"
   }
+  if (finalScore >= bestscore) {
+    localStorage.setItem("bestscore", finalScore)
+  }
+  if (widthow === widthfps && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !"
+  }
+  if (widthow === widthmv && widthow >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !"
+  }
+  if (widthfps === widthmv && widthfps >= widthow + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories FPS et Metroidvania !"
+  }
+  if (widthow === widthfps && widthfps === widthmv && finalScore <= 299) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans toutes les catégories !"
+  }
+  let bestscoreoat = document.getElementById("bestscore")
+  let score = document.getElementById("score");
+  score.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
+  bestscoreoat.innerHTML = "Meilleur score: " + bestscore
   vie = 0;
   document.getElementById("coeur1").src = "../img/brokenheart.png";
   document.getElementById("coeur2").src = "../img/brokenheart.png";
@@ -788,6 +811,80 @@ function rejouer() {
   window.location.href = "../view/accueil.html";
   sessionStorage.clear();
 }
+//victoire
+function stats() {
+  var showstat = document.getElementById("MyNavVictoire");
+  showstat.style.height = "100%";
+}
+function closeoverlay() {
+  var showstat = document.getElementById("MyNavVictoire");
+  showstat.style.height = "0%";
+}
+if (window.location.href.includes("victoire.html")) {
+
+  widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
+  widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
+  widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+
+  widthow = Math.max(0, widthow);
+  widthfps = Math.max(0, widthfps);
+  widthmv = Math.max(0, widthmv);
+
+  if (document.getElementById("barow")) {
+    document.getElementById("barow").style.width = widthow + "%";
+    document.getElementById("ptsow").innerHTML = widthow + " pts";
+  }
+  if (document.getElementById("barfps")) {
+    document.getElementById("barfps").style.width = widthfps + "%";
+    document.getElementById("ptsfps").innerHTML = widthfps + " pts";
+  }
+  if (document.getElementById("barmv")) {
+    document.getElementById("barmv").style.width = widthmv + "%";
+    document.getElementById("ptsmv").innerHTML = widthmv + " pts";
+  }
+  var bestscore = localStorage.getItem("bestscore") || 0;
+  let finalScore = widthow + widthfps + widthmv;
+  if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie Open World avec " + widthow + "/100"
+  }
+  if (widthfps >= widthow + 1 && widthfps >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie FPS avec " + widthfps + "pts/100"
+  }
+  if (widthmv >= widthow + 1 && widthmv >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie MetroidVania avec " + widthmv + "pts/100"
+  }
+  if (finalScore === 300) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Bravo tu as répondu correctement à toutes les questions sans fautes !"
+  }
+  if (finalScore >= bestscore) {
+    localStorage.setItem("bestscore", finalScore)
+  }
+  if (widthow === widthfps && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !"
+  }
+  if (widthow === widthmv && widthow >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !"
+  }
+  if (widthfps === widthmv && widthfps >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories FPS et Metroidvania !"
+  }
+  if (widthow === widthfps && widthfps === widthmv === finalScore <= 300) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans toutes les catégories !"
+  }
+    let score = document.getElementById("score");
+  score.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
+   let bestscorev = document.getElementById("bestscorev")
+    bestscorev.innerHTML = bestscore
+}
+//cheat 
 let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 let konamiPosition = 0;
 document.addEventListener('keydown', function (e) {
@@ -832,10 +929,6 @@ function cheat() {
     document.getElementById("coeur3").src = "../img/heart.png";
   }
   else if (window.location.href.includes("fps.html")) {
-    widthow = 100;
-    barow.style.width = widthow + "%";
-    ptsow.innerHTML = widthow + " pts";
-    sessionStorage.setItem("widthow", widthow);
     widthfps = 100;
     barfps.style.width = widthfps + "%";
     ptsfps.innerHTML = widthfps + " pts";
@@ -852,14 +945,6 @@ function cheat() {
     document.getElementById("coeur3").src = "../img/heart.png";
   }
   else if (window.location.href.includes("mv.html")) {
-    widthow = 100;
-    barow.style.width = widthow + "%";
-    ptsow.innerHTML = widthow + " pts";
-    sessionStorage.setItem("widthow", widthow);
-    widthfps = 100;
-    barfps.style.width = widthfps + "%";
-    ptsfps.innerHTML = widthfps + " pts";
-    sessionStorage.setItem("widthfps", widthfps);
     widthmv = 100;
     barmv.style.width = widthmv + "%";
     ptsmv.innerHTML = widthmv + " pts";
