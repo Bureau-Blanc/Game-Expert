@@ -4,7 +4,7 @@ body {
 }
 
 body#accueil {
-    background-image: url(../img/accueil.png);
+    background-image: url(../img/accueil.webp);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -58,7 +58,7 @@ body#accueil {
 }
 
 .wallpaperjeu {
-    background-image: url(../img/jeu1.png);
+    background-image: url(../img/jeu1.webp);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -105,8 +105,8 @@ body#accueil {
 /*overlay ow*/
 .h1ow {
     text-align: center;
-    margin-top: -5%;
-    font-size: 300%;
+    margin-top: -8%;
+    font-size: 27   0%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     text-shadow: 0 0 7px #91ff00;
@@ -115,7 +115,7 @@ body#accueil {
 
 .h2ow {
     text-align: center;
-    font-size: 260%;
+    font-size: 240%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     margin-top: 1.5%;
@@ -128,7 +128,7 @@ body#accueil {
 .pow {
     text-align: left;
     margin-left: 30%;
-    font-size: 170%;
+    font-size: 120%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     margin-top: 0;
@@ -374,7 +374,7 @@ body#accueil {
 /*ow*/
 /*fps*/
 .jeufps {
-    background-image: url(../img/jeufps.png);
+    background-image: url(../img/jeufps.webp);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -384,11 +384,11 @@ body#accueil {
 }
 
 /*logo fps*/
-.logo {
+.logo,.cs2 {
     border-radius: 50%;
     width: 9%;
     transition: transform 0.5s;
-    margin-top: 1%;
+    margin-top: -1%;
     margin-left: 45%;
     margin-right: auto;
     border: solid 4px #ff7b0f;
@@ -399,7 +399,7 @@ body#accueil {
     transform: scale(1.5);
 }
 
-.cs2,
+
 .miramar {
     margin-top: -2.7%;
     border-radius: 50%;
@@ -412,7 +412,8 @@ body#accueil {
 
 .miramar:hover,
 .cs2:hover {
-    transform: scale(2.5);
+    transform: scale(2);
+    border-radius: 0%;
 }
 
 /*overlay fps*/
@@ -432,7 +433,7 @@ body#accueil {
     font-weight: 550;
     margin-top: 1.5%;
     max-width: 67%;
-    margin-left: 20%;
+    margin-left: 30%;
     text-shadow: 0 0 7px #ff0000;
     color: #ef944a;
 }
@@ -677,8 +678,8 @@ body#accueil {
     opacity: 50%;
     position: relative;
     position: fixed;
-    left: 45.2%;
-    top: 4%;
+    left: 43.7%;
+    top: -2%;
 }
 
 
@@ -696,11 +697,11 @@ body#accueil {
 }
 
 /*logo mv*/
-.imgmv {
+.imgmv, .imgmv2 {
     border-radius: 50%;
     width: 9%;
     transition: transform 0.5s;
-    margin-top: 1%;
+    margin-top: -1%;
     margin-left: 45%;
     margin-right: auto;
     border: solid 3px #005f8f;
@@ -710,12 +711,16 @@ body#accueil {
 .imgmv:hover {
     transform: scale(1.5);
 }
-
+.imgmv2:hover
+{
+    border-radius: 0%;
+    transform: scale(2);
+}
 /*overlay mv*/
 .h1mv {
     text-align: center;
-    margin-top: -7%;
-    font-size: 300%;
+    margin-top: -9%;
+    font-size: 270%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     text-shadow: 0 0 7px #00c8ff;
@@ -724,7 +729,7 @@ body#accueil {
 
 .h2mv {
     text-align: center;
-    font-size: 250%;
+    font-size: 220%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     margin-top: 1.5%;
@@ -737,7 +742,7 @@ body#accueil {
 .pmv {
     text-align: left;
     margin-left: 30%;
-    font-size: 150%;
+    font-size: 130%;
     font-family: 'Fredoka', sans-serif;
     font-weight: 550;
     margin-top: 0;
