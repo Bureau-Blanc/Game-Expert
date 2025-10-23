@@ -73,6 +73,7 @@ window.onload = function () {
   }
   if (vie === 2) {
     document.getElementById("coeur3").src = "../img/brokenheart.png";
+    parseInt(sessionStorage.setItem("vie", 2));
   }
 
   if (vie === 1) {
@@ -350,7 +351,7 @@ function questionsfps(clicked_id) {
 //valide la réponse
 function validerfps() {
   var essaitest = document.getElementById("essai" + questionfps);  //nombre d'essais
-
+  let vie = parseInt(sessionStorage.getItem("vie")) || 3;
   //question fps 14
   if (questionfps === 14) {
     var input14 = document.getElementById("input14").value;
@@ -504,7 +505,6 @@ function validerfps() {
 //choisis un question mv aléatoire
 function questionsmv(clicked_id) {
   document.getElementById(clicked_id).id = "rnb";
-
   if (listmv.length === 0) {
     console.log("Toutes les questions ont déjà été utilisées !");
     return;
@@ -529,6 +529,7 @@ function questionsmv(clicked_id) {
 //valide la réponse
 function validermv() {
   var essaitest = document.getElementById("essai" + questionmv);  //nombre d'essais
+    let vie = parseInt(sessionStorage.getItem("vie")) || 3;
   //question mv 22
   if (questionmv === 22) {
     var input22 = document.getElementById("input22").value;
