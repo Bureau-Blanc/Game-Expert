@@ -49,35 +49,35 @@ function chargement3() {
 
 //charge la page avec les bonnes valeurs
 window.onload = function () {
-  let widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
-  let widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
-  let widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+   widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
+   widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
+   widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
   var bar = document.getElementById("barow");
   var barfps = document.getElementById("barfps");
   var barmv = document.getElementById("barmv");
   var pts = document.getElementById("ptsow");
   var ptsfps = document.getElementById("ptsfps");
   var ptsmv = document.getElementById("ptsmv");
-  let vie = parseInt(sessionStorage.getItem("vie")) || 3;
-      if (bar && pts) {
-      bar.style.width = widthow + "%";
-      pts.innerHTML = widthow + " pts";
-    }
-    if (barfps && ptsfps) {
-      barfps.style.width = widthfps + "%";
-      ptsfps.innerHTML = widthfps + " pts";
-    }
-    if (barmv && ptsmv) {
-      barmv.style.width = widthmv + "%";
-      ptsmv.innerHTML = widthmv + " pts";
-    }
+   vie = parseInt(sessionStorage.getItem("vie")) || 3;
+  if (bar && pts) {
+    bar.style.width = widthow + "%";
+    pts.innerHTML = widthow + " pts";
+  }
+  if (barfps && ptsfps) {
+    barfps.style.width = widthfps + "%";
+    ptsfps.innerHTML = widthfps + " pts";
+  }
+  if (barmv && ptsmv) {
+    barmv.style.width = widthmv + "%";
+    ptsmv.innerHTML = widthmv + " pts";
+  }
   if (vie === 2) {
     document.getElementById("coeur3").src = "../img/brokenheart.png";
   }
 
   if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
+    document.getElementById("coeur1").id = "coeurShake";
+    document.getElementById("coeur2").src = "../img/brokenheart.png";
   }
   console.log("widthow =", widthow, "vie =", vie);
   bar.style.width = widthow + "%";
@@ -167,7 +167,6 @@ function validerow() {
       if (vie === 0) {
         document.getElementById("coeurShake").src = "../img/brokenheart.png";
         window.location.href = "../view/gameover.html";
-
       }
 
       if (essai <= 2) essai++;
@@ -243,12 +242,12 @@ function validerow() {
 
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
-        essaitest.classList.remove("essai" + questionow);
-        essaitest.classList.add("essaij");
-        
-      }
+      essaitest.classList.remove("essai" + questionow);
+      essaitest.classList.add("essaij");
 
-      if (essai === 2) {
+    }
+
+    if (essai === 2) {
 
       if (essai === 3) {
         essaitest.classList.remove("essaij");
@@ -536,7 +535,7 @@ function validermv() {
     var rep22 = input22.toLowerCase();
     if (
       rep22 === "metroid" ||
-      rep22 === "castlevania" 
+      rep22 === "castlevania"
     ) {
       scoremv += 10;
       widthmv += 10;
@@ -603,7 +602,7 @@ function validermv() {
     var rep30 = input30.toLowerCase();
     if (
       rep30 === "samus" ||
-      rep30 === "samus aran" 
+      rep30 === "samus aran"
     ) {
       scoremv += 10;
       widthmv += 10;
@@ -654,12 +653,12 @@ function validermv() {
 
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
-        essaitest.classList.remove("essai" + questionmv);
-        essaitest.classList.add("essaij");
-        
-      }
+      essaitest.classList.remove("essai" + questionmv);
+      essaitest.classList.add("essaij");
 
-      if (essai === 2) {
+    }
+
+    if (essai === 2) {
 
       if (essai === 3) {
         essaitest.classList.remove("essaij");
@@ -733,6 +732,7 @@ function validermv() {
     }
   }
 }
+//game-over
 if (window.location.href.includes("gameover.html")) {
 
   widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
@@ -755,11 +755,47 @@ if (window.location.href.includes("gameover.html")) {
     document.getElementById("barmv").style.width = widthmv + "%";
     document.getElementById("ptsmv").innerHTML = widthmv + " pts";
   }
-
+   bestscore = localStorage.getItem("bestscore") || 0;
   let finalScore = widthow + widthfps + widthmv;
-  let scorgo = document.getElementById("scorgo");
-  scorgo.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
-
+  if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie Open World avec " + widthow + "/100"
+  }
+  if (widthfps >= widthow + 1 && widthfps >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie FPS avec " + widthfps + "pts/100"
+  }
+  if (widthmv >= widthow + 1 && widthmv >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie MetroidVania avec " + widthmv + "pts/100"
+  }
+  if (finalScore === 300) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Bravo tu as répondu correctement à toutes les questions sans fautes !"
+  }
+  if (finalScore >= bestscore) {
+    localStorage.setItem("bestscore", finalScore)
+  }
+  if (widthow === widthfps && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !"
+  }
+  if (widthow === widthmv && widthow >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !"
+  }
+  if (widthfps === widthmv && widthfps >= widthow + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories FPS et Metroidvania !"
+  }
+  if (widthow === widthfps && widthfps === widthmv && finalScore <= 299) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans toutes les catégories !"
+  }
+  let bestscoreoat = document.getElementById("bestscore")
+  let score = document.getElementById("score");
+  score.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
+  bestscoreoat.innerHTML = "Meilleur score: " + bestscore
   vie = 0;
   document.getElementById("coeur1").src = "../img/brokenheart.png";
   document.getElementById("coeur2").src = "../img/brokenheart.png";
@@ -774,31 +810,106 @@ function rejouer() {
   window.location.href = "../view/accueil.html";
   sessionStorage.clear();
 }
-  let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-  let konamiPosition = 0;
-  document.addEventListener('keydown', function(e) {
-    if (e.key === konamiCode[konamiPosition]) {
-      konamiPosition++;
-      if (konamiPosition === konamiCode.length) {
-        konamiPosition = 0;
-        cheat();
-      }
-    } else {
+//victoire
+function stats() {
+  var showstat = document.getElementById("MyNavVictoire");
+  showstat.style.height = "100%";
+}
+function closeoverlay() {
+  var showstat = document.getElementById("MyNavVictoire");
+  showstat.style.height = "0%";
+}
+if (window.location.href.includes("victoire.html")) {
+
+  widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
+  widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
+  widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+
+  widthow = Math.max(0, widthow);
+  widthfps = Math.max(0, widthfps);
+  widthmv = Math.max(0, widthmv);
+
+  if (document.getElementById("barow")) {
+    document.getElementById("barow").style.width = widthow + "%";
+    document.getElementById("ptsow").innerHTML = widthow + " pts";
+  }
+  if (document.getElementById("barfps")) {
+    document.getElementById("barfps").style.width = widthfps + "%";
+    document.getElementById("ptsfps").innerHTML = widthfps + " pts";
+  }
+  if (document.getElementById("barmv")) {
+    document.getElementById("barmv").style.width = widthmv + "%";
+    document.getElementById("ptsmv").innerHTML = widthmv + " pts";
+  }
+  var bestscore = localStorage.getItem("bestscore") || 0;
+  let finalScore = widthow + widthfps + widthmv;
+  if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie Open World avec " + widthow + "/100"
+  }
+  if (widthfps >= widthow + 1 && widthfps >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie FPS avec " + widthfps + "pts/100"
+  }
+  if (widthmv >= widthow + 1 && widthmv >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu es le plus fort dans la catégorie MetroidVania avec " + widthmv + "pts/100"
+  }
+  if (finalScore === 300) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Bravo tu as répondu correctement à toutes les questions sans fautes !"
+  }
+  if (finalScore >= bestscore) {
+    localStorage.setItem("bestscore", finalScore)
+  }
+  if (widthow === widthfps && widthow >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !"
+  }
+  if (widthow === widthmv && widthow >= widthfps + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !"
+  }
+  if (widthfps === widthmv && widthfps >= widthmv + 1) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories FPS et Metroidvania !"
+  }
+  if (widthow === widthfps && widthfps === widthmv === finalScore <= 300) {
+    var bestof3 = document.getElementById("bestof3")
+    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans toutes les catégories !"
+  }
+    let score = document.getElementById("score");
+  score.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
+   let bestscorev = document.getElementById("bestscorev")
+    bestscorev.innerHTML = bestscore
+}
+//cheat 
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiPosition = 0;
+document.addEventListener('keydown', function (e) {
+  if (e.key === konamiCode[konamiPosition]) {
+    konamiPosition++;
+    if (konamiPosition === konamiCode.length) {
       konamiPosition = 0;
+      cheat();
     }
-  });
-    let basiccheat = ['c', 'h', 'e', 'a', 't'];
-  let basicPosition = 0;
-  document.addEventListener('keydown', function(e) {
-    if (e.key === basiccheat[basicPosition]) {
-      basicPosition++;
-      if (basicPosition === basiccheat.length) {
-        basicPosition = 0;
-        cheat();
-      }
-    } else {
+  } else {
+    konamiPosition = 0;
+  }
+});
+let basiccheat = ['c', 'h', 'e', 'a', 't'];
+let basicPosition = 0;
+document.addEventListener('keydown', function (e) {
+  if (e.key === basiccheat[basicPosition]) {
+    basicPosition++;
+    if (basicPosition === basiccheat.length) {
       basicPosition = 0;
-    }});
+      cheat();
+    }
+  } else {
+    basicPosition = 0;
+  }
+});
 function cheat() {
   if (window.location.href.includes("ow.html")) {
     widthow = 100;
@@ -817,10 +928,6 @@ function cheat() {
     document.getElementById("coeur3").src = "../img/heart.png";
   }
   else if (window.location.href.includes("fps.html")) {
-    widthow = 100;
-    barow.style.width = widthow + "%";
-    ptsow.innerHTML = widthow + " pts";
-    sessionStorage.setItem("widthow", widthow);
     widthfps = 100;
     barfps.style.width = widthfps + "%";
     ptsfps.innerHTML = widthfps + " pts";
@@ -837,6 +944,24 @@ function cheat() {
     document.getElementById("coeur3").src = "../img/heart.png";
   }
   else if (window.location.href.includes("mv.html")) {
+    widthmv = 100;
+    barmv.style.width = widthmv + "%";
+    ptsmv.innerHTML = widthmv + " pts";
+    sessionStorage.setItem("widthmv", widthmv);
+    mvrestant = 0;
+    popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+    carimg3 = document.getElementById("carimg3")
+    carimg3.classList.remove("carimg3");
+    carimg3.classList.add("carunlocked3");
+    vie = 3;
+    sessionStorage.setItem("vie", vie);
+    document.getElementById("coeur1").src = "../img/heart.png";
+    document.getElementById("coeur2").src = "../img/heart.png";
+    document.getElementById("coeur3").src = "../img/heart.png";
+  }
+
+  if (window.location.href.includes("gameover.html")) {
+    window.location.href = "../view/victoire.html";
     widthow = 100;
     barow.style.width = widthow + "%";
     ptsow.innerHTML = widthow + " pts";
@@ -855,35 +980,9 @@ function cheat() {
     carimg3.classList.remove("carimg3");
     carimg3.classList.add("carunlocked3");
     vie = 3;
-    sessionStorage.setItem("vie", vie);
     document.getElementById("coeur1").src = "../img/heart.png";
     document.getElementById("coeur2").src = "../img/heart.png";
     document.getElementById("coeur3").src = "../img/heart.png";
-}
-
-if (window.location.href.includes("gameover.html")) {
-window.location.href = "../view/victoire.html";
-        widthow = 100;
-    barow.style.width = widthow + "%";
-    ptsow.innerHTML = widthow + " pts";
-    sessionStorage.setItem("widthow", widthow);
-    widthfps = 100;
-    barfps.style.width = widthfps + "%";
-    ptsfps.innerHTML = widthfps + " pts";
-    sessionStorage.setItem("widthfps", widthfps);
-    widthmv = 100;
-    barmv.style.width = widthmv + "%";
-    ptsmv.innerHTML = widthmv + " pts";
-    sessionStorage.setItem("widthmv", widthmv);
-    mvrestant = 0;
-    popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
-    carimg3 = document.getElementById("carimg3")
-    carimg3.classList.remove("carimg3");
-    carimg3.classList.add("carunlocked3");
-    vie = 3;
-    document.getElementById("coeur1").src = "../img/heart.png";
-    document.getElementById("coeur2").src = "../img/heart.png";
-    document.getElementById("coeur3").src = "../img/heart.png";
-}
+  }
 }
 
