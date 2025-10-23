@@ -59,25 +59,28 @@ window.onload = function () {
   var ptsfps = document.getElementById("ptsfps");
   var ptsmv = document.getElementById("ptsmv");
   let vie = parseInt(sessionStorage.getItem("vie")) || 3;
-      if (bar && pts) {
-      bar.style.width = widthow + "%";
-      pts.innerHTML = widthow + " pts";
-    }
-    if (barfps && ptsfps) {
-      barfps.style.width = widthfps + "%";
-      ptsfps.innerHTML = widthfps + " pts";
-    }
-    if (barmv && ptsmv) {
-      barmv.style.width = widthmv + "%";
-      ptsmv.innerHTML = widthmv + " pts";
-    }
+  if (bar && pts) {
+    bar.style.width = widthow + "%";
+    pts.innerHTML = widthow + " pts";
+  }
+  if (barfps && ptsfps) {
+    barfps.style.width = widthfps + "%";
+    ptsfps.innerHTML = widthfps + " pts";
+  }
+  if (barmv && ptsmv) {
+    barmv.style.width = widthmv + "%";
+    ptsmv.innerHTML = widthmv + " pts";
+  }
   if (vie === 2) {
     document.getElementById("coeur3").src = "../img/brokenheart.png";
+    parseInt(sessionStorage.setItem("vie", 2));
   }
 
   if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
+    document.getElementById("coeur1").id = "coeurShake";
+    document.getElementById("coeur2").src = "../img/brokenheart.png";
+    document.getElementById("coeur3").src = "../img/brokenheart.png";
+    parseInt(sessionStorage.setItem("vie", 1));
   }
   console.log("widthow =", widthow, "vie =", vie);
   bar.style.width = widthow + "%";
@@ -243,12 +246,12 @@ function validerow() {
 
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
-        essaitest.classList.remove("essai" + questionow);
-        essaitest.classList.add("essaij");
-        
-      }
+      essaitest.classList.remove("essai" + questionow);
+      essaitest.classList.add("essaij");
 
-      if (essai === 2) {
+    }
+
+    if (essai === 2) {
 
       if (essai === 3) {
         essaitest.classList.remove("essaij");
@@ -351,7 +354,7 @@ function questionsfps(clicked_id) {
 //valide la réponse
 function validerfps() {
   var essaitest = document.getElementById("essai" + questionfps);  //nombre d'essais
-
+  let vie = parseInt(sessionStorage.getItem("vie")) || 3;
   //question fps 14
   if (questionfps === 14) {
     var input14 = document.getElementById("input14").value;
@@ -505,7 +508,6 @@ function validerfps() {
 //choisis un question mv aléatoire
 function questionsmv(clicked_id) {
   document.getElementById(clicked_id).id = "rnb";
-
   if (listmv.length === 0) {
     console.log("Toutes les questions ont déjà été utilisées !");
     return;
@@ -530,13 +532,14 @@ function questionsmv(clicked_id) {
 //valide la réponse
 function validermv() {
   var essaitest = document.getElementById("essai" + questionmv);  //nombre d'essais
+    let vie = parseInt(sessionStorage.getItem("vie")) || 3;
   //question mv 22
   if (questionmv === 22) {
     var input22 = document.getElementById("input22").value;
     var rep22 = input22.toLowerCase();
     if (
       rep22 === "metroid" ||
-      rep22 === "castlevania" 
+      rep22 === "castlevania"
     ) {
       scoremv += 10;
       widthmv += 10;
@@ -603,7 +606,7 @@ function validermv() {
     var rep30 = input30.toLowerCase();
     if (
       rep30 === "samus" ||
-      rep30 === "samus aran" 
+      rep30 === "samus aran"
     ) {
       scoremv += 10;
       widthmv += 10;
@@ -654,12 +657,12 @@ function validermv() {
 
       if (essai <= 2) essai++;
       essaitest.innerHTML = "Essai n°" + essai + "/3";
-        essaitest.classList.remove("essai" + questionmv);
-        essaitest.classList.add("essaij");
-        
-      }
+      essaitest.classList.remove("essai" + questionmv);
+      essaitest.classList.add("essaij");
 
-      if (essai === 2) {
+    }
+
+    if (essai === 2) {
 
       if (essai === 3) {
         essaitest.classList.remove("essaij");
@@ -759,7 +762,18 @@ if (window.location.href.includes("gameover.html")) {
   let finalScore = widthow + widthfps + widthmv;
   let scorgo = document.getElementById("scorgo");
   scorgo.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
-
+  if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
+    console.log("hey")
+  }
+  if (widthfps >= widthow + 1 && widthmv + 1) {
+    console.log("hi")
+  }
+  if (widthmv >= widthow + 1 && widthfps + 1) {
+    console.log("hello")
+  }
+  else {
+    console.log("égalité")
+  }
   vie = 0;
   document.getElementById("coeur1").src = "../img/brokenheart.png";
   document.getElementById("coeur2").src = "../img/brokenheart.png";
@@ -774,31 +788,32 @@ function rejouer() {
   window.location.href = "../view/accueil.html";
   sessionStorage.clear();
 }
-  let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-  let konamiPosition = 0;
-  document.addEventListener('keydown', function(e) {
-    if (e.key === konamiCode[konamiPosition]) {
-      konamiPosition++;
-      if (konamiPosition === konamiCode.length) {
-        konamiPosition = 0;
-        cheat();
-      }
-    } else {
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiPosition = 0;
+document.addEventListener('keydown', function (e) {
+  if (e.key === konamiCode[konamiPosition]) {
+    konamiPosition++;
+    if (konamiPosition === konamiCode.length) {
       konamiPosition = 0;
+      cheat();
     }
-  });
-    let basiccheat = ['c', 'h', 'e', 'a', 't'];
-  let basicPosition = 0;
-  document.addEventListener('keydown', function(e) {
-    if (e.key === basiccheat[basicPosition]) {
-      basicPosition++;
-      if (basicPosition === basiccheat.length) {
-        basicPosition = 0;
-        cheat();
-      }
-    } else {
+  } else {
+    konamiPosition = 0;
+  }
+});
+let basiccheat = ['c', 'h', 'e', 'a', 't'];
+let basicPosition = 0;
+document.addEventListener('keydown', function (e) {
+  if (e.key === basiccheat[basicPosition]) {
+    basicPosition++;
+    if (basicPosition === basiccheat.length) {
       basicPosition = 0;
-    }});
+      cheat();
+    }
+  } else {
+    basicPosition = 0;
+  }
+});
 function cheat() {
   if (window.location.href.includes("ow.html")) {
     widthow = 100;
@@ -859,11 +874,11 @@ function cheat() {
     document.getElementById("coeur1").src = "../img/heart.png";
     document.getElementById("coeur2").src = "../img/heart.png";
     document.getElementById("coeur3").src = "../img/heart.png";
-}
+  }
 
-if (window.location.href.includes("gameover.html")) {
-window.location.href = "../view/victoire.html";
-        widthow = 100;
+  if (window.location.href.includes("gameover.html")) {
+    window.location.href = "../view/victoire.html";
+    widthow = 100;
     barow.style.width = widthow + "%";
     ptsow.innerHTML = widthow + " pts";
     sessionStorage.setItem("widthow", widthow);
@@ -884,6 +899,6 @@ window.location.href = "../view/victoire.html";
     document.getElementById("coeur1").src = "../img/heart.png";
     document.getElementById("coeur2").src = "../img/heart.png";
     document.getElementById("coeur3").src = "../img/heart.png";
-}
+  }
 }
 
