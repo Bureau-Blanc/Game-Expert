@@ -79,6 +79,8 @@ window.onload = function () {
   if (vie === 1) {
     document.getElementById("coeur1").id = "coeurShake";
     document.getElementById("coeur2").src = "../img/brokenheart.png";
+        document.getElementById("coeur3").src = "../img/brokenheart.png";
+
   }
   console.log("widthow =", widthow, "vie =", vie);
   bar.style.width = widthow + "%";
@@ -525,8 +527,7 @@ function questionsmv(clicked_id) {
   return questionmv;
 }
 
-
-//valide la réponse
+//valide la réponse 
 function validermv() {
   var essaitest = document.getElementById("essai" + questionmv);  //nombre d'essais
     let vie = parseInt(sessionStorage.getItem("vie")) || 3;
@@ -549,16 +550,16 @@ function validermv() {
       essaitest.classList.remove("essair");
       essaitest.classList.add("essai" + questionmv);
       mvrestant -= 1;
-      popuptxt.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+      popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
       sessionStorage.setItem("widthmv", widthmv);
       if (mvrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
+        popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (mvrestant === 0) {
-        carimg = document.getElementById("carimg");
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
+    carimg3 = document.getElementById("carimg3")
+    carimg3.classList.remove("carimg3");
+    carimg3.classList.add("carunlocked3");
       }
     }
 
@@ -618,17 +619,16 @@ function validermv() {
       mvrestant -= 1;
       sessionStorage.setItem("widthmv", widthmv);
 
-      popuptxt.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+      popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
 
       if (mvrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
+        popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (mvrestant === 0) {
-        carimg = document.getElementById("carimg");
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none";
+    carimg3 = document.getElementById("carimg3")
+    carimg3.classList.remove("carimg3");
+    carimg3.classList.add("carunlocked3");
       }
     }
 
@@ -681,18 +681,18 @@ function validermv() {
       essaitest.classList.add("essai" + questionmv);
       essai = 1;
       mvrestant -= 1;
-      popuptxt.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
+      popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
       sessionStorage.setItem("widthmv", widthmv);
 
       if (mvrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
+        popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
       }
 
       if (mvrestant === 0) {
-        carimg = document.getElementById("carimg");
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none";
+        carimg3 = document.getElementById("carimg3");
+        carimg3.classList.remove("carimg3");
+        carimg3.classList.add("carunlocked3");
+        popuptxt3.style.display = "none";
       }
     }
 
@@ -986,4 +986,3 @@ function cheat() {
     document.getElementById("coeur3").src = "../img/heart.png";
   }
 }
-
