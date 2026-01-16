@@ -1,174 +1,117 @@
 <!DOCTYPE html>
-<html class="jeu" lang="fr">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeu MV</title>
+  <title>Jeu mv</title>
   <link rel="stylesheet" href="../style/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body id="jeumv" class="jeumv">
+<body id="jeumv" class="jeumv jeu">
   <div class="container">
     <img class="coeur" id="coeur1" src="../img/heart.png" alt="coeur">
     <img class="coeur" id="coeur2" src="../img/heart.png" alt="coeur">
-    <img class="coeur" id="coeur3" src="../img/heart.png" alt="coeur"></div>
-    <span class="bars">
-<span class="bars" id="bars">
-<div id="progressow" class="progressow"><div id="barow" class="barow"></div></div>
-<div id="progressfps" class="progressfps"><div id="barfps" class="barfps"></div></div>
-<div id="progressmv" class="progressmv"><div id="barmv" class="barmv"></div></div>
-</span>
-<span class="pts" id="pts">
-<p id="ptsow" class="ptsow">0 pts</p>
-<p id="ptsfps" class="ptsfps">0 pts</p>
-<p id="ptsmv" class="ptsmv">0 pts</p>
-</span>
-</span>
-  <div id="myNav21" class="overlay21">
-    <p class="essai21" id="essai21">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv" src="../img/hk.webp" alt="mv"></div>
-      <h2 class="h2mv">Quel Metroidvania sorti en 2025 a « cassé » les serveurs de Steam à sa sortie ?</h2>
-      <label class="radiomv"><p class="pmv">Hollow Knight Silksong</p><input class="radiomv" name="radio" type="radio" id="21vrai"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Super Metroid</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Metroid 2025 edition</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
+    <img class="coeur" id="coeur3" src="../img/heart.png" alt="coeur">
   </div>
-  <div id="myNav22" class="overlay22">
-    <p class="essai22" id="essai22">Essai n° 1/3</p>
+  <span class="bars">
+    <span class="bars" id="bars">
+      <div id="progress-ow" class="progress-ow">
+        <div id="bar-ow" class="bar-ow"></div>
+      </div>
+      <div id="progress-fps" class="progress-fps">
+        <div id="bar-fps" class="bar-fps"></div>
+      </div>
+      <div id="progress-mv" class="progress-mv">
+        <div id="bar-mv" class="bar-mv"></div>
+      </div>
+    </span>
+    <span class="pts" id="pts">
+      <p id="pts-ow" class="pts-ow">0 pts</p>
+      <p id="pts-fps" class="pts-fps">0 pts</p>
+      <p id="pts-mv" class="pts-mv">0 pts</p>
+    </span>
+  </span>
+  <div class="overlay">
+    <p class="essai" id="essai1">Essai n° 1/3</p>
     <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv" src="../img/hk.webp" alt="mv"></div>
-      <h2 class="h2mv">Citez un des 2 jeux qui compose le nom Metroidvania.</h2>
-      <input id="input22" class="inputmv" type="text">
+      <h1 class="h1mv h1"></h1>
+      <div class="divimage">
+        <img class="ImageMetroidVania image" alt="mv">
+      </div>
+      <h2 class="h2mv h2"></h2>
+      <label class="radiomv allradio">
+        <p class="pmv p1 p"></p><input class="radio" id="radio1" name="radio" type="radio"><span
+          class="checkmarkmv1 checkmark1"></span>
+      </label>
+      <label class="radiomv allradio">
+        <p class="pmv p2 p"></p><input class="radio" id="radio2" name="radio" type="radio"><span
+          class="checkmarkmv2 checkmark2"></span>
+      </label>
+      <label class="radiomv allradio">
+        <p class="pmv p3 p"></p><input class="radio" id="radio3" name="radio" type="radio"><span
+          class="checkmarkmv3 checkmark3"></span>
+      </label>
+      </p>
     </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav23" class="overlay23">
-    <p class="essai23" id="essai23">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv" src="../img/hk.webp" alt="mv"></div>
-      <h2 class="h2mv">Quel élément est essentiel pour progresser dans la plupart des Metroidvania ?</h2>
-      <label class="radiomv"><p class="pmv">Les points de compétence</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Les nouvelles capacités ou pouvoirs</p><input class="radiomv" name="radio" type="radio" id="23vrai"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Les skins</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav24" class="overlay24">
-    <p class="essai24" id="essai24">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv" src="../img/hk.webp" alt="mv"></div>
-      <h2 class="h2mv">Quel est le style de jeu principal dans les Metroidvania ?</h2>
-      <label class="radiomv"><p class="pmv">Tir à la première personne</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Plateforme et exploration 2D/3D</p><input class="radiomv" name="radio" type="radio" id="24vrai"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Puzzle uniquement</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav25" class="overlay25">
-    <p class="essai25" id="essai25">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv" src="../img/hk.webp" alt="mv"></div>
-      <h2 class="h2mv">Dans un Metroidvania, pourquoi retourne-t-on souvent dans des zones déjà explorées ?</h2>
-      <label class="radiomv"><p class="pmv">Pour chercher des trésors ou utiliser de nouvelles capacités</p><input class="radiomv" name="radio" type="radio" id="25vrai"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Pour refaire le jeu depuis le début</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Pour parler aux PNJ</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav26" class="overlay26">
-    <p class="essai26" id="essai26">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv2" src="../img/blasphemous.webp" alt="mv"></div>
-      <h2 class="h2mv">De quel jeu viens cette image ?</h2>
-      <label class="radiomv"><p class="pmv">Blasphemous</p><input class="radiomv" name="radio" type="radio" id="26vrai"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Hollow Knight Silksong</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Metroid Prime</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav27" class="overlay27">
-    <p class="essai27" id="essai27">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv2" src="../img/hkmap.webp" alt="mv"></div>
-      <h2 class="h2mv">De quel jeu viens cette carte ?</h2>
-      <label class="radiomv"><p class="pmv">Metroid</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Blasphemous</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Hollow Knight</p><input class="radiomv" name="radio" type="radio" id="27vrai"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav28" class="overlay28">
-    <p class="essai28" id="essai28">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv" src="../img/hk.webp" alt="mv"></div>
-      <h2 class="h2mv">Lequel de ces jeux n'est pas un Metroidvania ?</h2>
-      <label class="radiomv"><p class="pmv">Metroid Prime</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Hollow Knight</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Metroid Prime Pinball</p><input class="radiomv" name="radio" type="radio"  id="28vrai"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav29" class="overlay29">
-    <p class="essai29" id="essai29">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv2" src="../img/anyradiance.webp" alt="mv"></div>
-      <h2 class="h2mv">Quel est le boss (Moddé) le plus dur d'Hollow Knight ?</h2>
-      <label class="radiomv"><p class="pmv">Any Radiance 3.0</p><input class="radiomv" name="radio" type="radio" id="29vrai"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Absolute Radiance</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-      <label class="radiomv"><p class="pmv">Nightmare King Grimm</p><input class="radiomv" name="radio" type="radio"><span class="checkmarkmv"></span></label>
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-  <div id="myNav30" class="overlay30">
-    <p class="essai30" id="essai30">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1mv">Metroidvania</h1>
-      <div class="divmv"><img class="imgmv2" src="../img/samus.webp" alt="mv"></div>
-      <h2 class="h2mv">Quel est le nom de ce personnage ?</h2>
-       <input id="input30" class="inputmv" type="text">
-    </div>
-    <div class="validerbtn"><button class="validermv" onclick="validermv()">Valider</button></div>
-  </div>
-    <div class="car3">
-    <p class="popuptxt3" id="popuptxt3">Répondez encore à 10 questions avant d'accéder au prochain niveau.</p>
-    <div>
-      <span onclick="chargement3()" id="car3"><img class="carimg3" id="carimg3" src="../img/portalb.png" alt=""></span>
+    <div class="validerbtn">
+      <button class="validermv valider" onclick="valider()">Valider</button>
     </div>
   </div>
-<div id="question21"></div>
-<span id="21" onclick="questionsmv(this.id)"><img class="cible21" src="/img/bleu.png" alt="boutton"></span>
-<div id="question22"></div>
-<span id="22" onclick="questionsmv(this.id)"><img class="cible22" src="/img/bleu.png" alt="boutton"></span>
-<div id="question23"></div>
-<span id="23" onclick="questionsmv(this.id)"><img class="cible23" src="/img/bleu.png" alt="boutton"></span>
-<div id="question24"></div>
-<span id="24" onclick="questionsmv(this.id)"><img class="cible24" src="/img/bleu.png" alt="boutton"></span>
-<div id="question25"></div>
-<span id="25" onclick="questionsmv(this.id)"><img class="cible25" src="/img/bleu.png" alt="boutton"></span>
-<div id="question26"></div>
-<span id="26" onclick="questionsmv(this.id)"><img class="cible26" src="/img/bleu.png" alt="boutton"></span>
-<div id="question27"></div>
-<span id="27" onclick="questionsmv(this.id)"><img class="cible27" src="/img/bleu.png" alt="boutton"></span>
-<div id="question28"></div>
-<span id="28" onclick="questionsmv(this.id)"><img class="cible28" src="/img/bleu.png" alt="boutton"></span>
-<div id="question29"></div>
-<span id="29" onclick="questionsmv(this.id)"><img class="cible29" src="/img/bleu.png" alt="boutton"></span>
-<div id="question30"></div>
-<span id="30" onclick="questionsmv(this.id)"><img class="cible30" src="/img/bleu.png" alt="boutton"></span>
-
-<script src="../script/script.js"></script>
+  <div class="overlay">
+    <p class="essai" id="essai2">Essai n° 1/3</p>
+    <div>
+      <h1 class="h1mv h1"></h1>
+      <div class="divimage">
+        <img class="ImageMetroidVania image" alt="mv">
+      </div>
+      <h2 class="h2mv h2"></h2>
+      <input id="textarea" class="textareamv textarea" type="text" autocomplete="off">
+    </div>
+    <div class="validerbtn">
+      <button class="validermv valider" onclick="valider()">Valider</button>
+    </div>
+  </div>
+  <div class="tp">
+    <div class="popup popupmv">
+      <p class="popuptxt popuptxtmv">Répondez encore à 10 questions avant d'accéder au prochain niveau.</p>
+    </div>
+    <span onclick="chargement()"><img class="tpimg tpimgmv" src="../img/portail-3.png" alt="portail"></span>
+  </div>
+  <div id="question21">
+    <span id="20" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question22">
+    <span id="21" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question23">
+    <span id="22" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question24">
+    <span id="23" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question25">
+    <span id="24" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question26">
+    <span id="25" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question27">
+    <span id="26" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question28">
+    <span id="27" onclick="questions(this.id)"><img class="cible" src="/img/bleu.png" alt="bouton"></span>
+  </div>
+  <div id="question29">
+    <span id="28" class="text" onclick="questions(this.id, this.className)"><img class="cible" src="/img/bleu.png"
+        alt="bouton"></span>
+  </div>
+  <div id="question30">
+    <span id="29" class="text" onclick="questions(this.id, this.className)"><img class="cible" src="/img/bleu.png"
+        alt="bouton"></span>
+  </div>
+  <script src="../script/script.js"></script>
+</body>
 
 </html>

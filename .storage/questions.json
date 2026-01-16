@@ -1,0 +1,307 @@
+  {
+
+  "Backgrounds": {
+    "PC": {
+      "ow": "Image_OpenWorld_pc.png",
+      "fps": "Image_FPS_pc.png",
+      "mv": "Image_MV_pc.png"
+    },
+    "Mobile": {
+      "ow": "Image_OpenWorld_tel.png",
+      "fps": "Image_FPS_tel.png",
+      "mv": "Image_MV_tel.png"
+    }
+  },
+    "QuestionList": [
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "logo-ow.png",
+        "category": "Open World",
+        "question": "Quel est la définition d'un jeu Open World ?",
+        "repOne": "Un jeu où le joueur explore librement un grand environnement",
+        "repTwo": "Un jeu divisé en niveaux fermés à débloquer",
+        "repThree": "Un jeu centré sur une quête principale sans liberté"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "logo-ow.png",
+        "category": "Open World",
+        "question": "Quel est l'Open World le plus téléchargé ?",
+        "repOne": "Minecraft",
+        "repTwo": "Elden Ring",
+        "repThree": "GTA V"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "GTAV.webp",
+        "category": "Open World",
+        "question": "De quel jeu vient cette image ?",
+        "repOne": "GTA V",
+        "repTwo": "The Legend of Zelda Breath of The Wild",
+        "repThree": "GTA VI"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "peinture.webp",
+        "category": "Open World",
+        "question": "De quel jeu vient cette peinture ?",
+        "repOne": "Minecraft",
+        "repTwo": "Red Dead Redemption",
+        "repThree": "Assassin's Creed Black Flag"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "la.webp",
+        "category": "Open World",
+        "question": "Dans quelle ville se passe GTA V ?",
+        "repOne": "Los Santos",
+        "repTwo": "Los Angeles",
+        "repThree": "Los Gatos"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "logo-ow.png",
+        "category": "Open World",
+        "question": "Lequel de ces jeux n'est pas un Open World ?",
+        "repOne": "Mario Odyssey",
+        "repTwo": "Assassin's Creed Odyssey",
+        "repThree": "The Legend of Zelda Tears of The Kingdom"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "ac.webp",
+        "category": "Open World",
+        "question": "D'où vient la célèbre série Assassin's Creed ?",
+        "repOne": "Ubisoft",
+        "repTwo": "Rockstar Games",
+        "repThree": "Xbox"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "botw.webp",
+        "category": "Open World",
+        "question": "De quel jeu vient cette carte ?",
+        "repOne": "The Legend of Zelda Breath of The Wild",
+        "repTwo": "Elden Ring",
+        "repThree": "Red Dead Redemption 2"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "aether.webp",
+        "category": "Open World",
+        "question": "Nommez une des trois dimensions de Minecraft",
+        "repTrue":["Overworld","Nether","End"]
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"Image_OpenWorld_Tel.png",
+        "image": "fh5.webp",
+        "category": "Open World",
+        "question": "Dans quel pays se déroule Forza Horizon 5 ?",
+        "repTrue": ["Mexique"]
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-fps.png",
+        "category": "FPS",
+        "question": "Que veut dire l'anagramme FPS ?",
+        "repOne": "First Person Shooter",
+        "repTwo": "First Playable Shooter",
+        "repThree": "Firearm Proficiency System"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-fps.png",
+        "category": "FPS",
+        "question": "Qu'est-ce qu'on appelle généralement un Deathmatch ?",
+        "repOne": "Un tous contre tous ou le but est de tuer le plus grand nombre de personnes",
+        "repTwo": "Un équipe contre équipe ou le but est de tuer le plus grand nombre de personnes",
+        "repThree": "Un combat en 1vs1"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-fps.png",
+        "category": "FPS",
+        "question": "Quel est le FPS le moins apprécié chez les joueurs parmi ceux-ci ?",
+        "repOne": "Overwatch 2",
+        "repTwo": "Counter-Strikes 2",
+        "repThree": "Rust"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "valorant.webp",
+        "category": "FPS",
+        "question": "Dans Valorant, qui dit « I know exactly where you are » ?",
+        "repOne": "Cypher",
+        "repTwo": "Brimstone",
+        "repThree": "Omen"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-fps.png",
+        "category": "FPS",
+        "question": "Lequel de ces jeux a été remasterisé en FPS ?",
+        "repOne": "Les échecs",
+        "repTwo": "Le morpion",
+        "repThree": "Le puissance 4"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-fps.png",
+        "category": "FPS",
+        "question": "De quel jeu vient « Enemy spotted » ?",
+        "repOne": "Counter-Strike 2",
+        "repTwo": "Team Fortress 2",
+        "repThree": "Valorant"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "cs2.webp",
+        "category": "FPS",
+        "question": "De quel FPS vient cette image ?",
+        "repOne": "CS-2",
+        "repTwo": "Valorant",
+        "repThree": "Apex"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-fps.png",
+        "category": "FPS",
+        "question": "Lequel de ces jeux n'est pas un FPS ?",
+        "repOne": "Fortnite",
+        "repTwo": "Valorant",
+        "repThree": "Receiver 2"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "miramar.png",
+        "category": "FPS",
+        "question": "Quel est le nom de cette carte PUBG ?",
+        "repOne": "Miramar",
+        "repTwo": "Icebox",
+        "repThree": "Erangel"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "karambit.webp",
+        "category": "FPS",
+        "question": "Quel est le nom de ce type de couteau ?",
+        "repTrue": ["Karambit"]
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-mv.png",
+        "category": "MetroidVania",
+        "question": "Quel Metroidvania sorti en 2025 a « cassé » les serveurs de Steam à sa sortie ?",
+        "repOne": "Hollow Knight Silksong",
+        "repTwo": "Super Metroid",
+        "repThree": "Metroid 2025 edition"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "anyradiance.webp",
+        "category": "MetroidVania",
+        "question": "Quel est le boss (Moddé) le plus dur d'Hollow Knight ?",
+        "repOne": "Any Radiance 3.0",
+        "repTwo": "Absolute Radiance",
+        "repThree": "Nightmare King Grimm"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-mv.png",
+        "category": "MetroidVania",
+        "question": "Quel élément est essentiel pour progresser dans la plupart des Metroidvania ?",
+        "repOne": "Les nouvelles capacités ou pouvoirs",
+        "repTwo": "Les points de compétence",
+        "repThree": "Les skins"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-mv.png",
+        "category": "MetroidVania",
+        "question": "Quel est le style de jeu principal dans les Metroidvania ?",
+        "repOne": "Plateforme et exploration 2D/3D",
+        "repTwo": "Un jeu divisé en niveaux fermés à débloquer",
+        "repThree": "Un jeu centré sur une quête principale sans liberté"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-mv.png",
+        "category": "MetroidVania",
+        "question": "Dans un Metroidvania, pourquoi retourne-t-on souvent dans des zones déjà explorées ?",
+        "repOne": "Pour chercher des trésors ou utiliser de nouvelles capacités",
+        "repTwo": "Pour refaire le jeu depuis le début",
+        "repThree": "Pour parler aux PNJ"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "blasphemous.webp",
+        "category": "MetroidVania",
+        "question": "De quel jeu viens cette image ?",
+        "repOne": "Blasphemous",
+        "repTwo": "Hollow Knight Silksong",
+        "repThree": "Metroid Prime"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "hkmap.webp",
+        "category": "MetroidVania",
+        "question": "De quel jeu viens cette carte ?",
+        "repOne": "Hollow Knight",
+        "repTwo": "Metroid",
+        "repThree": "Blasphemous"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-mv.png",
+        "category": "MetroidVania",
+        "question": "Lequel de ces jeux n'est pas un Metroidvania ?",
+        "repOne": "Metroid Prime Pinball",
+        "repTwo": "Hollow Knight Silksong",
+        "repThree": "Metroid Prime"
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "logo-mv.png",
+        "category": "MetroidVania",
+        "question": "Citez un des 2 jeux qui compose le nom Metroidvania",
+        "repTrue": ["metroid","castlevania"]
+      },
+      {
+        "imageordi":"Image_OpenWorld_Ordi",
+        "imagetel":"",
+        "image": "samus.webp",
+        "category": "MetroidVania",
+        "question": "Quel est le nom de ce personnage ?",
+        "repTrue": ["Samus"]
+      }
+    ]
+  }

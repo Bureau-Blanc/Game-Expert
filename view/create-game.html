@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <div class="myNavchoixquestion">
+        <label class="choixquestion">
+            <p>Question choix multiple</p><input class="radio-choix-question" name="radio" type="radio" id="QCM">
+        </label>
+        <label class="choix">
+            <p>Question choix unique</p><input class="radio-choix-question" name="radio" type="radio" id="QCU">
+        </label>
+        <label class="choix">
+            <p>Question libre</p><input class="radio-choix-question" name="radio" type="radio" id="QL">
+        </label>
+        <button onclick="ValiderChoixQuestion()">Valider</button>
+    </div>
+
+    <div id="navtextarea" class="myNavinsererquestion">
+        <label class="insererquestion-textarea">
+            <textarea class="textarea">Insérer question...</textarea>
+            <textarea class="textarea">Réponse...</textarea>
+            <button onclick="ValiderQuestionTextArea()">Valider</button>
+    </div>
+
+    <div id="navradio" class="myNavinsererquestion">
+        <label class="insererquestion-radio">
+            <textarea class="textarea">Insérer question...</textarea>
+            <textarea class="textarea">Réponse fausse 1...</textarea>
+            <textarea class="textarea">Réponse fausse 2...</textarea>
+            <textarea class="textarea">Réponse vraie...</textarea>
+            <button onclick="ValiderQuestionRadio()">Valider</button>
+    </div>
+    <div id="navcheckbox" class="myNavinsererquestion">
+        <label class="insererquestion-radio">
+            <textarea class="textarea">Insérer question...</textarea>
+            <textarea class="textarea">Réponse fausse 1...</textarea>
+            <textarea class="textarea">Réponse fausse 2...</textarea>
+            <textarea class="textarea">Réponse vraie...</textarea>
+            <button onclick="ValiderQuestionCheckBox()">Valider</button>
+    </div>
+</body>
+<script src="../script/script.js"></script>
+
+</html>

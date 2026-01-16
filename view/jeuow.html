@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="jeu" lang="fr">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -9,278 +9,117 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body id="wallpaperjeu" class="wallpaperjeu">
+<body id="jeu-ow" class="jeu-ow jeu">
   <div class="container">
     <img class="coeur" id="coeur1" src="../img/heart.png" alt="coeur">
     <img class="coeur" id="coeur2" src="../img/heart.png" alt="coeur">
-    <img class="coeur" id="coeur3" src="../img/heart.png" alt="coeur"></div>
-    <span class="bars">
-<span class="bars" id="bars">
-<div id="progressow" class="progressow"><div id="barow" class="barow"></div></div>
-<div id="progressfps" class="progressfps"><div id="barfps" class="barfps"></div></div>
-<div id="progressmv" class="progressmv"><div id="barmv" class="barmv"></div></div>
-</span>
-<span class="pts" id="pts">
-<p id="ptsow" class="ptsow">0 pts</p>
-<p id="ptsfps" class="ptsfps">0 pts</p>
-<p id="ptsmv" class="ptsmv">0 pts</p>
-</span>
-</span>
-  <div id="myNav1" class="overlay1">
-    <p class="essai1" id="essai1">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/openworld.webp" alt="openworld">
+    <img class="coeur" id="coeur3" src="../img/heart.png" alt="coeur">
+  </div>
+  <span class="bars">
+    <span class="bars" id="bars">
+      <div id="progress-ow" class="progress-ow">
+        <div id="bar-ow" class="bar-ow"></div>
       </div>
-      <h2 class="h2ow">Quel est la définition d'un jeu Open World ?</h2>
-      <label class="radioow">
-        <p class="pow">Un jeu divisé en niveaux fermés à débloquer.</p><input class="radio" name="radio"
-          type="radio"><span class="checkmark"></span>
+      <div id="progress-fps" class="progress-fps">
+        <div id="bar-fps" class="bar-fps"></div>
+      </div>
+      <div id="progress-mv" class="progress-mv">
+        <div id="bar-mv" class="bar-mv"></div>
+      </div>
+    </span>
+    <span class="pts" id="pts">
+      <p id="pts-ow" class="pts-ow">0 pts</p>
+      <p id="pts-fps" class="pts-fps">0 pts</p>
+      <p id="pts-mv" class="pts-mv">0 pts</p>
+    </span>
+  </span>
+  <div class="overlay">
+    <p class="essai" id="essai1">Essai n° 1/3</p>
+    <h1 class="h1ow h1"></h1>
+    <div class="divimage">
+      <img class="image-ow image" alt="image-open-world">
+    </div>
+    <h2 class="h2ow h2"></h2>
+    <div class="overlaycontent">
+      <label class="radioow allradio">
+        <p class="pow p1 p"></p><input class="radio" id="radio1" name="radio" type="radio"><span
+          class="checkmarkow1 checkmark1"></span>
       </label>
-      <label class="radioow">
-        <p class="pow">Un jeu où le joueur explore librement un grand environnement.</p><input class="vrai" name="radio"
-          type="radio" id="1vrai"><span class="checkmark"></span>
+      <label class="radioow allradio">
+        <p class="pow p2 p"></p><input class="radio" id="radio2" name="radio" type="radio"><span
+          class="checkmarkow2 checkmark2"></span>
       </label>
-      <label class="radioow">
-        <p class="pow">Un jeu centré sur une quête principale sans liberté.</p><input class="radio" name="radio"
-          type="radio"><span class="checkmark"></span>
+      <label class="radioow allradio">
+        <p class="pow p3 p"></p><input class="radio" id="radio3" name="radio" type="radio"><span
+          class="checkmarkow3 checkmark3"></span>
       </label>
       </p>
     </div>
     <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
+      <button class="validerow valider" onclick="valider()">Valider</button>
     </div>
   </div>
-  <div id="myNav2" class="overlay2">
-    <p class="essai2" id="essai2">Essai n° 1/3</p>
+  <div class="overlay">
+    <p class="essai" id="essai2">Essai n° 1/3</p>
     <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/openworld.webp" alt="openworld">
+      <h1 class="h1ow h1"></h1>
+      <div class="divimage">
+        <img class="image-ow image" alt="image-ow">
       </div>
-      <h2 class="h2ow">Quel est l'Open World le plus téléchargé ?</h2>
-      <label class="radioow">
-        <p class="pow">GTA V</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Elden Ring</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Minecraft</p><input class="radio" name="radio" type="radio" id="2vrai"><span
-          class="checkmark"></span>
-      </label>
+      <h2 class="h2ow h2"></h2>
+      <input id="textarea" class="textareaow textarea" type="text" autocomplete="off">
     </div>
     <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
+      <button class="validerow valider" onclick="valider()">Valider</button>
     </div>
   </div>
-  <div id="myNav3" class="overlay3">
-    <p class="essai3" id="essai3">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="gta" src="/img/GTAV.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow">De quel jeu vient cette image ?</h2>
-      <label class="radioow">
-        <p class="pow">GTA V</p><input class="radio" name="radio" type="radio" id="3vrai"><span
-          class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">The Legend of Zelda Breath of The Wild</p><input class="radio" name="radio" type="radio" id="1faux3"><span
-          class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">GTA VI</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
+  <div class="tp">
+    <div class="popup popupow">
+      <p class="popuptxt popuptxtow">Répondez encore à 10 questions avant d'accéder au prochain niveau.</p>
     </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav4" class="overlay4">
-    <p class="essai4" id="essai4">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/peinture.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow">De quel jeu vient cette peinture ?</h2>
-      <label class="radioow">
-        <p class="pow">Assassin's Creed Black Flag</p><input class="radio" name="radio" type="radio"><span
-          class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Red Dead Redemption </p><input class="radio" name="radio" type="radio"><span
-          class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Minecraft</p><input class="radio" name="radio" type="radio" id="4vrai"><span
-          class="checkmark"></span>
-      </label>
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav5" class="overlay5">
-    <p class="essai5" id="essai5">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/aether.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow">Nommez une des trois dimensions de Minecraft.</h2>
-      <input id="input5" class="inputow" type="text">
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav6" class="overlay6">
-    <p class="essai1" id="essai6">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/openworld.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow">Lequel de ces jeux n'est pas un Open World ?</h2>
-      <label class="radioow">
-        <p class="pow">Mario Odyssey</p><input id="6vrai" class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Assassin's Creed Odyssey</p><input class="radio" name="radio" type="radio"><span
-          class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">The Legend of Zelda Tears of The Kingdom</p><input class="radio" name="radio" type="radio"><span
-          class="checkmark"></span>
-      </label>
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav7" class="overlay7">
-    <p class="essai1" id="essai7">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/ac.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow">D'où vient la célèbre série Assassin's Creed ? </h2>
-      <label class="radioow">
-        <p class="pow">Rockstar Games</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Xbox</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Ubisoft</p><input id="7vrai" class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav8" class="overlay8">
-    <p class="essai1" id="essai8">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="botw" src="/img/botw.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow">De quel jeu vient cette carte ?</h2>
-      <label class="radioow">
-        <p class="pow">The Legend of Zelda Breath of The Wild</p><input id="8vrai" class="radio" name="radio" type="radio"><span
-          class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Elden Ring</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Red Dead Redemption 2</p><input class="radio" name="radio" type="radio"><span
-          class="checkmark"></span>
-      </label>
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav9" class="overlay9">
-    <p class="essai1" id="essai9">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/la.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow"> Dans quelle ville se passe GTA V ?</h2>
-      <label class="radioow">
-        <p class="pow">Los Angeles </p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Los Santos</p><input id="9vrai" class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-      <label class="radioow">
-        <p class="pow">Los Gatos</p><input class="radio" name="radio" type="radio"><span class="checkmark"></span>
-      </label>
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div id="myNav10" class="overlay10">
-    <p class="essai1" id="essai10">Essai n° 1/3</p>
-    <div>
-      <h1 class="h1ow">Open World</h1>
-      <div class="divopenworld">
-        <img class="openworld" src="/img/fh5.webp" alt="openworld">
-      </div>
-      <h2 class="h2ow"> Dans quel pays se déroule Forza Horizon 5 ?</h2>
-      <input id="input10" class="inputow" type="text">
-    </div>
-    <div class="validerbtn">
-      <button class="valider" onclick="validerow()">Valider</button>
-    </div>
-  </div>
-  <div class="car">
-    <p class="popuptxt" id="popuptxt">Répondez encore à 10 questions avant d'accéder au prochain niveau.</p>
-    <div>
-      <span onclick="chargement1()" id="car"><img class="carimg" id="carimg" src="../img/portalb.png" alt="voiture"></span>
-    </div>
+    <span onclick="chargement()"><img class="tpimg tpimgow" src="../img/portail-1.png" alt="portail"></span>
   </div>
   <div id="question1">
-    <span id="1" onclick="questionsow(this.id)"><img class="cible1" src="/img/vert.png" alt="boutton"></span>
+    <span id="0" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question2">
-    <span id="2" onclick="questionsow(this.id)"><img class="cible2" src="/img/vert.png" alt="boutton"></span>
+    <span id="1" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question3">
-    <span id="3" onclick="questionsow(this.id)"><img class="cible3" src="/img/vert.png" alt="boutton"></span>
+    <span id="2" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question4">
-    <span id="4" onclick="questionsow(this.id)"><img class="cible4" src="/img/vert.png" alt="boutton"></span>
+    <span id="3" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question5">
-    <span id="5" onclick="questionsow(this.id)"><img class="cible5" src="/img/vert.png" alt="boutton"></span>
+    <span id="4" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question6">
-    <span id="6" onclick="questionsow(this.id)"><img class="cible6" src="/img/vert.png" alt="boutton"></span>
+    <span id="5"" onclick=" questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question7">
-    <span id="7" onclick="questionsow(this.id)"><img class="cible7" src="/img/vert.png" alt="boutton"></span>
+    <span id="6" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question8">
-    <span id="8" onclick="questionsow(this.id)"><img class="cible8" src="/img/vert.png" alt="boutton"></span>
+    <span id="7" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question9">
-    <span id="9" onclick="questionsow(this.id)"><img class="cible9" src="/img/vert.png" alt="boutton"></span>
+    <span id="8" class="text" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
   <div id="question10">
-    <span id="10" onclick="questionsow(this.id)"><img class="cible10" src="/img/vert.png" alt="boutton"></span>
+    <span id="9" class="text" onclick="questions(this.id, this.className)"><img class="cible" src="/img/vert.png"
+        alt="bouton"></span>
   </div>
-
   <script src="../script/script.js"></script>
 </body>
+
 </html>
