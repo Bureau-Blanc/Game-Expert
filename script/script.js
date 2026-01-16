@@ -1,810 +1,361 @@
+let reste = 10; //question restantes
+let vie = 3; //vie
+let reptruetolowercase = "";
+let width = {
+  ow: 0,
+  fps: 0,
+  mv: 0,
+};
 
-//ow = open world
-// //fps = first person shooter
-//mv = metroidvania
-var owrestant = 10;  //question ow restantes
-var fpsrestant = 10; //question fps restantes
-var mvrestant = 10; //question mv restantes
-var vie = 3;  //vie 
-var scoreow = 0;  //score ow
-var scorefps = 0; //score fps
-var scoremv = 0;  //score mv
-var barow = document.getElementById("barow");  //barre de score ow
-var barfps = document.getElementById("barfps");  //barre de score fps
-var barmv = document.getElementById("barmv");  //barre de score mv
-var widthow = 0;  //taille barre ow
-var widthfps = 0;  //taille barre fps
-var widthmv = 0;  //taille barre mv
-var rnb = document.getElementById("rnb");  //crystal en cour
-var essai = 1; //nombre d'essais
-var questionow = 0; //n° de la question ow
-var questionfps = 0; //n° de la question fps
-var questionmv = 0; //n° de la question mv
-let listow = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];  //liste questions ow
-let listfps = ["11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];  //liste questions fps
-let listmv = ["21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];  //liste questions mv
-var progressfps = document.getElementById("progressfps");  //pour changer le style de progressfps
+let bars = {
+  ow: document.querySelector(".bar-ow"),
+  fps: document.querySelector(".bar-fps"),
+  mv: document.querySelector(".bar-mv"),
+};
+let pts = {
+  ow: document.querySelector("#pts-ow"),
+  fps: document.querySelector("#pts-fps"),
+  mv: document.querySelector("#pts-mv"),
+};
+let tp = {
+  ow: document.querySelector(".tpimgow"),
+  fps: document.querySelector(".tpimgfps"),
+  mv: document.querySelector(".tpimgmv"),
+};
+let popuptxt = {
+  ow: document.querySelector(".popupow"),
+  fps: document.querySelector(".popupfps"),
+  mv: document.querySelector(".popupmv"),
+};
+let stat = {
+  vone: document.querySelector("#score"),
+  vtwo: document.querySelector("#bestof3"),
+  vthree: document.querySelector("#bestscorev"),
+  gone: document.querySelector("#score"),
+  gtwo: document.querySelector("#bestof3"),
+  gthree: document.querySelector("#bestscore"),
+};
+let bestscore = localStorage.getItem("bestscore") || 0;
+let message = "";
+const rnb = document.querySelector("#rnb"); //crystal en cour
+let essai = 1; //nombre d'essais
+let Questions = [];
+let CategorieNow = "";
+let RadioRepOne = "";
+let repow = "";
+let Id = "";
+let reptrue = "";
+let essaitest = document.querySelectorAll(".essai"); //nombre d'essais
 //démarre le jeu
-
-
-function demarrer() {
-  window.location.href = "../view/jeuow.html";
+async function demarrer() {
+  const TakeFromJSON = await fetch("../.storage/questions.json").then(
+    (response) => {
+      return response.json();
+    }
+  ); //prends les questions du json
+  localStorage.setItem("Questions", JSON.stringify(TakeFromJSON)); //mets les questions dans le json sous forme de string
+  window.location.href = "../view/jeuow.html"; //va dans la première page
 }
-
 function chargement1() {
-  if (owrestant === 0) {
-    window.location.href = "../view/jeufps.html";
+  if (reste === 0) {
+    window.location.href = "../view/jeufps.html"; //va dans la 2eme page si toutes les questionsont été validée
   }
 }
 function chargement2() {
-  if (fpsrestant === 0) {
-    window.location.href = "../view/jeumv.html";
+  if (reste === 0) {
+    window.location.href = "../view/jeumv.html"; //va dans la 3eme page si toutes les questionsont été validée
   }
 }
 function chargement3() {
-  if (mvrestant === 0) {
-    window.location.href = "../view/victoire.html";
+  if (reste === 0) {
+    window.location.href = "../view/victoire.html"; //va dans la page victoire si toutes les questionsont été validée
   }
 }
 
 //charge la page avec les bonnes valeurs
-window.onload = function () {
-   widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
-   widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
-   widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
-  var bar = document.getElementById("barow");
-  var barfps = document.getElementById("barfps");
-  var barmv = document.getElementById("barmv");
-  var pts = document.getElementById("ptsow");
-  var ptsfps = document.getElementById("ptsfps");
-  var ptsmv = document.getElementById("ptsmv");
-   vie = parseInt(sessionStorage.getItem("vie")) || 3;
-  if (bar && pts) {
-    bar.style.width = widthow + "%";
-    pts.innerHTML = widthow + " pts";
+window.onload = async function () {
+  if (window.location.href.includes("jeuow.html")) {
+    CategorieNow = "ow";
+  } else if (window.location.href.includes("jeufps.html")) {
+    CategorieNow = "fps";
+  } else if (window.location.href.includes("jeumv.html")) {
+    CategorieNow = "mv";
   }
-  if (barfps && ptsfps) {
-    barfps.style.width = widthfps + "%";
-    ptsfps.innerHTML = widthfps + " pts";
+  Questions = JSON.parse(await this.localStorage.getItem("Questions")); //charge les questions
+  width["ow"] = parseInt(sessionStorage.getItem("widthow")) || 0; //charge la barre ow
+  width["fps"] = parseInt(sessionStorage.getItem("widthfps")) || 0; //charge la barre fps
+  width["mv"] = parseInt(sessionStorage.getItem("widthmv")) || 0; //charge la barre mv
+  vie = parseInt(sessionStorage.getItem("vie")) || 3; //charge la vie
+  // change le background selon la catégorie
+
+  //défini 2 nombres aléatoires pour chaques cible 1 pour la position sur l'axe x l'autre pour la position sur l'axe y
+  document.querySelectorAll(".cible").forEach((cible) => {
+    let RandomPositionTop = Math.floor(Math.random() * 70) + 15;
+    let RandomPositionLeft = Math.floor(Math.random() * 75) + 10;
+    cible.style.top = RandomPositionTop + "%";
+    cible.style.left = RandomPositionLeft + "%";
+  });
+
+  //actualise les points et la vie
+  if (bars["ow"] && pts["ow"]) {
+    bars["ow"].style.width = width["ow"] + "%";
+    pts["ow"].innerHTML = width["ow"] + " pts";
   }
-  if (barmv && ptsmv) {
-    barmv.style.width = widthmv + "%";
-    ptsmv.innerHTML = widthmv + " pts";
+  if (bars["fps"] && pts["fps"]) {
+    bars["fps"].style.width = width["fps"] + "%";
+    pts["fps"].innerHTML = width["fps"] + " pts";
+  }
+  if (bars["mv"] && pts["mv"]) {
+    bars["mv"].style.width = width["mv"] + "%";
+    pts["mv"].innerHTML = width["mv"] + " pts";
   }
   if (vie === 2) {
-    document.getElementById("coeur3").src = "../img/brokenheart.png";
+    document.querySelector("#coeur3").src = "../img/brokenheart.png";
     parseInt(sessionStorage.setItem("vie", 2));
   }
-
   if (vie === 1) {
-    document.getElementById("coeur1").id = "coeurShake";
-    document.getElementById("coeur2").src = "../img/brokenheart.png";
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-
+    document.querySelector("#coeur1").id = "coeurShake";
+    document.querySelector("#coeur2").src = "../img/brokenheart.png";
+    document.querySelector("#coeur3").src = "../img/brokenheart.png";
   }
-  console.log("widthow =", widthow, "vie =", vie);
-  bar.style.width = widthow + "%";
-  pts.innerHTML = widthow + " pts";
+  bars["ow"].style.width = width["ow"] + "%";
+  pts["ow"].innerHTML = width["ow"] + " pts";
+  const mediaQuery = window.matchMedia("(max-width: 768px)");
+  mediaQuery.addEventListener("change", applyBackground);
+  applyBackground(mediaQuery);
+  function applyBackground(elem) {
+    let device;
+    if (elem && elem.matches) {
+      device = "Mobile";
+    } else {
+      device = "PC";
+    }
+    let imagename = Questions.Backgrounds[device][CategorieNow];
+    if (imagename) {
+      document.body.style.backgroundImage = `url('../img/${imagename}')`;
+    }
+  }
 };
 
-
-//ow
-//choisis un question ow aléatoire 
-function questionsow(clicked_id) {
+function questions(clicked_id, clicked_class) {
+  Id = parseInt(clicked_id);
   document.getElementById(clicked_id).id = "rnb";
-
-  if (listow.length === 0) {
-    console.log("Toutes les questions ont déjà été utilisées !");
-    return;
+  if (clicked_class == "text") {
+    let q = Questions.QuestionList[clicked_id];
+    document.querySelectorAll(".overlay")[1].style.height = "100%";
+    document.querySelectorAll(".image")[1].src = "../img/" + q.image;
+    document.querySelectorAll(".h1")[1].innerHTML = q.category;
+    document.querySelectorAll(".h2")[1].innerHTML = q.question;
+  } else {
+    document.querySelectorAll(".overlay")[0].style.height = "100%";
+    random(clicked_id);
   }
-
-  var randomIndex = Math.floor(Math.random() * listow.length);
-  questionow = parseInt(listow[randomIndex]);
-  listow.splice(randomIndex, 1);
-  console.log("Question :", questionow);
-  var element = document.getElementById("myNav" + questionow);
-
-  if (element) {
-    element.style.height = "100%";
-  }
-  else {
-    console.warn("Élément introuvable : myNav" + questionow);
-  }
-  return questionow;
+}
+function random(clicked_id) {
+  let q = Questions.QuestionList[clicked_id];
+  let order = ["repOne", "repTwo", "repThree"];
+  let RandomPlacement = order.sort(() => Math.random() - 0.5);
+  document.querySelector(".image").src = "../img/" + q.image;
+  document.querySelector(".h1").innerHTML = q.category;
+  document.querySelector(".h2").innerHTML = q.question;
+  document.querySelector(".p1").innerHTML = q[RandomPlacement[0]];
+  document.querySelector(".p2").innerHTML = q[RandomPlacement[1]];
+  document.querySelector(".p3").innerHTML = q[RandomPlacement[2]];
+  let index = RandomPlacement.indexOf("repOne");
+  const radios = [
+    document.querySelector("#radio1"),
+    document.querySelector("#radio2"),
+    document.querySelector("#radio3"),
+  ];
+  RadioRepOne = radios[index];
 }
 
-
-//valide la réponse
-function validerow() {
-  var essaitest = document.getElementById("essai" + questionow);  //nombre d'essais
-  //question ow 5
-  if (questionow === 5) {
-    var input5 = document.getElementById("input5").value;
-    var rep5 = input5.toLowerCase();
-    if (
-      rep5 === "overworld" ||
-      rep5 === "nether" ||
-      rep5 === "end" ||
-      rep5 === "l'overworld" ||
-      rep5 === "le nether" ||
-      rep5 === "l'end"
-    ) {
-      scoreow += 10;
-      widthow += 10;
-      barow.style.width = widthow + "%";
-      ptsow.innerHTML = widthow + " pts";
-      document.getElementById("myNav" + questionow).style.height = "0%";
-      document.getElementById("rnb").id = "questionfin";
-      essai = 1
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionow);
-      owrestant -= 1;
-      popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
-      sessionStorage.setItem("widthow", widthow);
-      if (owrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (owrestant === 0) {
-        carimg = document.getElementById("carimg");
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-      }
-    }
-
-    else {
-      widthow -= 5;
-      vie -= 1;
-      sessionStorage.setItem("widthow", widthow);
-      sessionStorage.setItem("vie", vie);
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-
-
-      if (essai === 2) {
-        essaitest.classList.remove("essai" + questionow);
-        essaitest.classList.add("essaij");
-      }
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
+function valider() {
+  let textarea = document.querySelector("#textarea").value;
+  rep = textarea.toLowerCase();
+  if (
+    Questions.QuestionList[Id].repTrue != "" &&
+    Questions.QuestionList[Id].repTrue != undefined
+  ) {
+    reptrue = Questions.QuestionList[Id].repTrue;
+    reptruetolowercase = reptrue.map((reptrue) => reptrue.toLowerCase());
+    console.log(reptrue);
   }
-  //question ow 10
-  if (questionow === 10) {
-    var input10 = document.getElementById("input10").value;
-    var rep10 = input10.toLowerCase();
-    if (
-      rep10 === "mexique" ||
-      rep10 === "au mexique" ||
-      rep10 === "le mexique"
-    ) {
-      scoreow += 10;
-      widthow += 10;
-      document.getElementById("rnb").id = "questionfin";
-      document.getElementById("myNav" + questionow).style.height = "0%";
-      barow.style.width = widthow + "%";
-      ptsow.innerHTML = widthow + " pts";
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionow);
-      essai = 1;
-      owrestant -= 1;
-      sessionStorage.setItem("widthow", widthow);
-
-      popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
-
-      if (owrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (owrestant === 0) {
-        carimg = document.getElementById("carimg");
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none";
-      }
+  if (
+    RadioRepOne.checked ||
+    (reptruetolowercase.includes(rep) && reptrue != undefined && reptrue != "")
+  ) {
+    document.querySelectorAll(".radio").forEach((radio) => {
+      radio.checked = false;
+    });
+    document.querySelectorAll(".overlay").forEach((overlay) => {
+      overlay.style.height = "0%";
+    });
+    document.querySelectorAll("#textarea").forEach((textarea) => {
+      textarea.value = "";
+    });
+    document.querySelector("#rnb").id = "questionfin";
+    reste -= 1;
+    popuptxt[CategorieNow].innerHTML =
+      "Répondez encore à " +
+      reste +
+      " questions avant d'accéder au prochain niveau.";
+    if (reste === 1) {
+      popuptxt[CategorieNow].innerHTML =
+        "Répondez encore à " +
+        reste +
+        " question avant d'accéder au prochain niveau.";
     }
 
-    else {
-      widthow -= 5;
-      vie -= 1;
-      sessionStorage.setItem("widthow", widthow);
-      sessionStorage.setItem("vie", vie);
-
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-      essaitest.classList.remove("essai" + questionow);
-      essaitest.classList.add("essaij");
-
+    if (reste === 0) {
+      tp[CategorieNow].id = "tpunlocked";
+      popuptxt[CategorieNow].style.visibility = "hidden";
     }
-
+    if (essai === 1) {
+      width[CategorieNow] += 10;
+      bars[CategorieNow].style.width = width[CategorieNow] + "%";
+      pts[CategorieNow].innerHTML = width[CategorieNow] + " pts";
+    }
     if (essai === 2) {
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
-  }
-  //autres questions
-  else {
-    if (document.getElementById(questionow + "vrai").checked === true) {
-      scoreow += 10;
-      widthow += 10;
-      document.getElementById("rnb").id = "questionfin";
-      document.getElementById("myNav" + questionow).style.height = "0%";
-      barow.style.width = widthow + "%";
-      ptsow.innerHTML = widthow + " pts";
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionow);
+      width[CategorieNow] += 5;
+      bars[CategorieNow].style.width = width[CategorieNow] + "%";
+      pts[CategorieNow].innerHTML = width[CategorieNow] + " pts";
       essai = 1;
-      owrestant -= 1;
-      popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
-      sessionStorage.setItem("widthow", widthow);
-
-      if (owrestant === 1) {
-        popuptxt.innerHTML = "Répondez encore à " + owrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (owrestant === 0) {
-        carimg = document.getElementById("carimg");
-        carimg.classList.remove("carimg");
-        carimg.classList.add("carunlocked");
-        popuptxt.style.display = "none";
-      }
+      document.querySelector("#essai1").innerHTML = "Essai n°" + essai + "/3";
+      document.querySelector("#essai2").innerHTML = "Essai n°" + essai + "/3";
+      essaitest[0].classList.remove("essaij");
+      essaitest[0].classList.add("essai");
+      essaitest[1].classList.remove("essaij");
+      essaitest[1].classList.add("essai");
     }
 
-    else {
-      widthow -= 5;
-
-      vie -= 1;
-      sessionStorage.setItem("widthow", widthow);
-      sessionStorage.setItem("vie", vie);
-
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-
-      if (essai === 2) {
-        essaitest.classList.remove("essai" + questionow);
-        essaitest.classList.add("essaij");
-      }
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
-  }
-}
-//fps
-//choisis un question fps aléatoire 
-function questionsfps(clicked_id) {
-  document.getElementById(clicked_id).id = "rnb";
-
-  if (listfps.length === 0) {
-    console.log("Toutes les questions ont déjà été utilisées !");
-    return;
-  }
-
-  var randomIndex = Math.floor(Math.random() * listfps.length);
-  questionfps = parseInt(listfps[randomIndex]);
-  listfps.splice(randomIndex, 1);
-  console.log("Question :", questionfps);
-  var element = document.getElementById("myNav" + questionfps);
-
-  if (element) {
-    element.style.height = "100%";
-  }
-  else {
-    console.warn("Élément introuvable : myNav" + questionfps);
-  }
-  return questionfps;
-}
-
-
-//valide la réponse
-function validerfps() {
-  var essaitest = document.getElementById("essai" + questionfps);  //nombre d'essais
-  let vie = parseInt(sessionStorage.getItem("vie")) || 3;
-  //question fps 14
-  if (questionfps === 14) {
-    var input14 = document.getElementById("input14").value;
-    var rep14 = input14.toLowerCase();
-    if (
-      rep14 === "karambit" ||
-      rep14 === "un karambit" ||
-      rep14 === "le karambit"
-    ) {
-      scorefps += 10;
-      widthfps += 10;
-      document.getElementById("rnb").id = "questionfin";
-      document.getElementById("myNav" + questionfps).style.height = "0%";
-      barfps.style.width = widthfps + "%";
-      ptsfps.innerHTML = widthfps + " pts";
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionfps);
-      sessionStorage.setItem("widthfps", widthfps);
+    if (essai === 3) {
       essai = 1;
-      fpsrestant -= 1;
-      popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
-      if (ptsfps === 100) {
-        ptsfps.style.right = "0%";
-        progressfps.style.right = "0%";
-      }
-      if (fpsrestant === 1) {
-        popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (fpsrestant === 0) {
-        carimg2 = document.getElementById("carimg2")
-        carimg2.classList.remove("carimg2");
-        carimg2.classList.add("carunlocked2");
-        popuptxt2.style.display = "none";
-      }
+      width[CategorieNow] += 0;
+      bars[CategorieNow].style.width = width[CategorieNow] + "%";
+      pts[CategorieNow].innerHTML = width[CategorieNow] + " pts";
+      document.querySelector("#essai1").innerHTML = "Essai n°" + essai + "/3";
+      document.querySelector("#essai2").innerHTML = "Essai n°" + essai + "/3";
+      essaitest[0].classList.remove("essair");
+      essaitest[0].classList.add("essai");
+      essaitest[1].classList.remove("essair");
+      essaitest[1].classList.add("essai");
+    }
+    sessionStorage.setItem("width" + CategorieNow, width[CategorieNow]);
+  } else {
+    vie -= 1;
+    sessionStorage.setItem("vie", vie);
+    if (vie === 2) {
+      document.querySelector("#coeur3").src = "../img/brokenheart.png";
     }
 
-    else {
-      widthfps -= 5;
-      vie -= 1;
-      sessionStorage.setItem("widthfps", widthfps);
-      sessionStorage.setItem("vie", vie);
-      if (widthfps <= 0) {
-        widthfps = 0;
-      }
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-
-      if (essai === 2) {
-        essaitest.classList.remove("essai" + questionfps);
-        essaitest.classList.add("essaij");
-      }
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
-  }
-  //autres questions
-  else {
-    if (document.getElementById(questionfps + "vrai").checked === true) {
-      scorefps += 10;
-      widthfps += 10;
-      document.getElementById("rnb").id = "questionfin";
-      document.getElementById("myNav" + questionfps).style.height = "0%";
-      barfps.style.width = widthfps + "%";
-      ptsfps.innerHTML = widthfps + " pts";
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionfps);
-      sessionStorage.setItem("widthfps", widthfps);
-      essai = 1;
-      fpsrestant -= 1;
-      if (ptsfps === 100) {
-        ptsfps.style.right = "0%";
-        progressfps.style.right = "0%";
-      }
-      popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
-      if (fpsrestant === 1) {
-        popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (fpsrestant === 0) {
-        carimg2 = document.getElementById("carimg2")
-        carimg2.classList.remove("carimg2");
-        carimg2.classList.add("carunlocked2");
-        popuptxt2.style.display = "none";
-      }
+    if (vie === 1) {
+      document.querySelector("#coeur1").id = "coeurShake";
+      document.querySelector("#coeur2").src = "../img/brokenheart.png";
     }
 
-    else {
-      vie -= 1;
-      sessionStorage.setItem("widthfps", widthfps);
-      sessionStorage.setItem("vie", vie);
-      if (widthfps <= 0) {
-        widthfps = 0;
-      }
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-      widthfps -= 5;
-      if (widthfps <= 0) {
-        widthfps = 0;
-      }
-
-      if (essai === 2) {
-        essaitest.classList.remove("essai" + questionfps);
-        essaitest.classList.add("essaij");
-      }
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
-  }
-}
-
-//mv
-//choisis un question mv aléatoire
-function questionsmv(clicked_id) {
-  document.getElementById(clicked_id).id = "rnb";
-  if (listmv.length === 0) {
-    console.log("Toutes les questions ont déjà été utilisées !");
-    return;
-  }
-
-  var randomIndex = Math.floor(Math.random() * listmv.length);
-  questionmv = parseInt(listmv[randomIndex]);
-  listmv.splice(randomIndex, 1);
-  console.log("Question :", questionmv);
-  var element = document.getElementById("myNav" + questionmv);
-
-  if (element) {
-    element.style.height = "100%";
-  }
-  else {
-    console.warn("Élément introuvable : myNav" + questionmv);
-  }
-  return questionmv;
-}
-
-//valide la réponse 
-function validermv() {
-  var essaitest = document.getElementById("essai" + questionmv);  //nombre d'essais
-    let vie = parseInt(sessionStorage.getItem("vie")) || 3;
-  //question mv 22
-  if (questionmv === 22) {
-    var input22 = document.getElementById("input22").value;
-    var rep22 = input22.toLowerCase();
-    if (
-      rep22 === "metroid" ||
-      rep22 === "castlevania"
-    ) {
-      scoremv += 10;
-      widthmv += 10;
-      barmv.style.width = widthmv + "%";
-      ptsmv.innerHTML = widthmv + " pts";
-      document.getElementById("myNav" + questionmv).style.height = "0%";
-      document.getElementById("rnb").id = "questionfin";
-      essai = 1
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionmv);
-      mvrestant -= 1;
-      popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
-      sessionStorage.setItem("widthmv", widthmv);
-      if (mvrestant === 1) {
-        popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (mvrestant === 0) {
-    carimg3 = document.getElementById("carimg3")
-    carimg3.classList.remove("carimg3");
-    carimg3.classList.add("carunlocked3");
-      }
+    if (vie === 0) {
+      document.querySelector("#coeurShake").src = "../img/brokenheart.png";
+      window.location.href = "../view/gameover.html";
     }
 
-    else {
-      widthmv -= 5;
-      vie -= 1;
-      sessionStorage.setItem("widthmv", widthmv);
-      sessionStorage.setItem("vie", vie);
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-
-
-      if (essai === 2) {
-        essaitest.classList.remove("essai" + questionmv);
-        essaitest.classList.add("essaij");
-      }
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
-  }
-  //question mv 30
-  if (questionmv === 30) {
-    var input30 = document.getElementById("input30").value;
-    var rep30 = input30.toLowerCase();
-    if (
-      rep30 === "samus" ||
-      rep30 === "samus aran"
-    ) {
-      scoremv += 10;
-      widthmv += 10;
-      document.getElementById("rnb").id = "questionfin";
-      document.getElementById("myNav" + questionmv).style.height = "0%";
-      barmv.style.width = widthmv + "%";
-      ptsmv.innerHTML = widthmv + " pts";
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionmv);
-      essai = 1;
-      mvrestant -= 1;
-      sessionStorage.setItem("widthmv", widthmv);
-
-      popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
-
-      if (mvrestant === 1) {
-        popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (mvrestant === 0) {
-    carimg3 = document.getElementById("carimg3")
-    carimg3.classList.remove("carimg3");
-    carimg3.classList.add("carunlocked3");
-      }
-    }
-
-    else {
-      widthmv -= 5;
-      vie -= 1;
-      sessionStorage.setItem("widthmv", widthmv);
-      sessionStorage.setItem("vie", vie);
-
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-      essaitest.classList.remove("essai" + questionmv);
-      essaitest.classList.add("essaij");
-
-    }
-
+    if (essai <= 2) essai++;
+    document.querySelector("#essai1").innerHTML = "Essai n°" + essai + "/3";
+    document.querySelector("#essai2").innerHTML = "Essai n°" + essai + "/3";
     if (essai === 2) {
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
-    }
-  }
-  //autres questions
-  else {
-    if (document.getElementById(questionmv + "vrai").checked === true) {
-      scoremv += 10;
-      widthmv += 10;
-      document.getElementById("rnb").id = "questionfin";
-      document.getElementById("myNav" + questionmv).style.height = "0%";
-      barmv.style.width = widthmv + "%";
-      ptsmv.innerHTML = widthmv + " pts";
-      essaitest.classList.remove("essaij");
-      essaitest.classList.remove("essair");
-      essaitest.classList.add("essai" + questionmv);
-      essai = 1;
-      mvrestant -= 1;
-      popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
-      sessionStorage.setItem("widthmv", widthmv);
-
-      if (mvrestant === 1) {
-        popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " question avant d'accéder au prochain niveau.";
-      }
-
-      if (mvrestant === 0) {
-        carimg3 = document.getElementById("carimg3");
-        carimg3.classList.remove("carimg3");
-        carimg3.classList.add("carunlocked3");
-        popuptxt3.style.display = "none";
-      }
+      essaitest[0].classList.remove("essai");
+      essaitest[0].classList.add("essaij");
+      essaitest[1].classList.remove("essai");
+      essaitest[1].classList.add("essaij");
     }
 
-    else {
-      widthmv -= 5;
-
-      vie -= 1;
-      sessionStorage.setItem("widthmv", widthmv);
-      sessionStorage.setItem("vie", vie);
-
-      if (vie === 2) {
-        document.getElementById("coeur3").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 1) {
-        document.getElementById("coeur1").id = "coeurShake";
-        document.getElementById("coeur2").src = "../img/brokenheart.png";
-      }
-
-      if (vie === 0) {
-        document.getElementById("coeurShake").src = "../img/brokenheart.png";
-        window.location.href = "../view/gameover.html";
-
-      }
-
-      if (essai <= 2) essai++;
-      essaitest.innerHTML = "Essai n°" + essai + "/3";
-
-      if (essai === 2) {
-        essaitest.classList.remove("essai" + questionmv);
-        essaitest.classList.add("essaij");
-      }
-
-      if (essai === 3) {
-        essaitest.classList.remove("essaij");
-        essaitest.classList.add("essair");
-      }
+    if (essai === 3) {
+      essaitest[0].classList.remove("essaij");
+      essaitest[0].classList.add("essair");
+      essaitest[1].classList.remove("essaij");
+      essaitest[1].classList.add("essair");
     }
   }
 }
+
 //game-over
 if (window.location.href.includes("gameover.html")) {
+  width["ow"] = parseInt(sessionStorage.getItem("widthow")) || 0;
+  width["fps"] = parseInt(sessionStorage.getItem("widthfps")) || 0;
+  width["mv"] = parseInt(sessionStorage.getItem("widthmv")) || 0;
 
-  widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
-  widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
-  widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+  width["ow"] = Math.max(0, width["ow"]);
+  width["fps"] = Math.max(0, width["fps"]);
+  width["mv"] = Math.max(0, width["mv"]);
 
-  widthow = Math.max(0, widthow);
-  widthfps = Math.max(0, widthfps);
-  widthmv = Math.max(0, widthmv);
+  if (document.querySelector("#bar-ow")) {
+    document.querySelector("#bar-ow").style.width = width["ow"] + "%";
+    document.querySelector("#pts-ow").innerHTML = width["ow"] + " pts";
+  }
+  if (document.querySelector("#bar-fps")) {
+    document.querySelector("#bar-fps").style.width = width["fps"] + "%";
+    document.querySelector("#pts-fps").innerHTML = width["fps"] + " pts";
+  }
+  if (document.querySelector("#bar-mv")) {
+    document.querySelector("#bar-mv").style.width = width["mv"] + "%";
+    document.querySelector("#pts-mv").innerHTML = width["mv"] + " pts";
+  }
+  let q = Questions.QuestionList;
+  ow = width["ow"];
+  fps = width["fps"];
+  mv = width["mv"];
+  totalscore = ow + fps + mv;
+  if (totalscore >= bestscore) {
+    localStorage.setItem("bestscore", totalscore);
+  }
+  if (ow > fps && ow > mv) {
+    message =
+      "Tu es le plus fort dans la catégorie " +
+      q.category[0] +
+      " avec " +
+      ow +
+      "pts/100";
+  } else if (fps < ow && fps < mv) {
+    message =
+      "Tu es le plus fort dans la catégorie " +
+      q.category[10] +
+      " avec " +
+      fps +
+      "pts/100";
+  } else if (mv > ow && mv > fps) {
+    message =
+      "Tu es le plus fort dans la catégorie " +
+      q.category[20] +
+      " avec " +
+      mv +
+      "pts/100";
+  } else if (ow === fps && ow > mv) {
+    message =
+      "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !";
+  } else if (ow === mv && ow > fps) {
+    message =
+      "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !";
+  } else if (fps === mv && fps > ow) {
+    message =
+      "Tu as obtenu le même nombre de points dans les catégories FPS et MetroidVania !";
+  } else if (ow === fps && ow === mv && totalscore != 300) {
+    message =
+      "Tu as obtenu le même nombre de points dans toutes les catégories";
+  } else {
+    message = "Bravo tu as répondu correctement à toutes les questions !";
+  }
+  stat["gone"].textContent = "Tu as finis avec " + totalscore + "points";
+  stat["gtwo"].textContent = message;
+  stat["gthree"].textContent = "Meilleur score:" + bestscore;
 
-  if (document.getElementById("barow")) {
-    document.getElementById("barow").style.width = widthow + "%";
-    document.getElementById("ptsow").innerHTML = widthow + " pts";
-  }
-  if (document.getElementById("barfps")) {
-    document.getElementById("barfps").style.width = widthfps + "%";
-    document.getElementById("ptsfps").innerHTML = widthfps + " pts";
-  }
-  if (document.getElementById("barmv")) {
-    document.getElementById("barmv").style.width = widthmv + "%";
-    document.getElementById("ptsmv").innerHTML = widthmv + " pts";
-  }
-   bestscore = localStorage.getItem("bestscore") || 0;
-  let finalScore = widthow + widthfps + widthmv;
-  if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu es le plus fort dans la catégorie Open World avec " + widthow + "/100"
-  }
-  if (widthfps >= widthow + 1 && widthfps >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu es le plus fort dans la catégorie FPS avec " + widthfps + "pts/100"
-  }
-  if (widthmv >= widthow + 1 && widthmv >= widthfps + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu es le plus fort dans la catégorie MetroidVania avec " + widthmv + "pts/100"
-  }
-  if (finalScore === 300) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Bravo tu as répondu correctement à toutes les questions sans fautes !"
-  }
-  if (finalScore >= bestscore) {
-    localStorage.setItem("bestscore", finalScore)
-  }
-  if (widthow === widthfps && widthow >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !"
-  }
-  if (widthow === widthmv && widthow >= widthfps + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !"
-  }
-  if (widthfps === widthmv && widthfps >= widthow + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories FPS et Metroidvania !"
-  }
-  if (widthow === widthfps && widthfps === widthmv && finalScore <= 299) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans toutes les catégories !"
-  }
-  let bestscoreoat = document.getElementById("bestscore")
-  let score = document.getElementById("score");
-  score.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
-  bestscoreoat.innerHTML = "Meilleur score: " + bestscore
   vie = 0;
-  document.getElementById("coeur1").src = "../img/brokenheart.png";
-  document.getElementById("coeur2").src = "../img/brokenheart.png";
-  document.getElementById("coeur3").src = "../img/brokenheart.png";
+  document.querySelector("#coeur1").src = "../img/brokenheart.png";
+  document.querySelector("#coeur2").src = "../img/brokenheart.png";
+  document.querySelector("#coeur3").src = "../img/brokenheart.png";
 
-  sessionStorage.setItem("widthow", widthow);
-  sessionStorage.setItem("widthfps", widthfps);
-  sessionStorage.setItem("widthmv", widthmv);
+  sessionStorage.setItem("widthow", width["ow"]);
+  sessionStorage.setItem("widthfps", width["fps"]);
+  sessionStorage.setItem("widthmv", width["mv"]);
 }
 
 function rejouer() {
@@ -813,94 +364,76 @@ function rejouer() {
 }
 //victoire
 function stats() {
-  var showstat = document.getElementById("MyNavVictoire");
+  let showstat = document.querySelector("#MyNavVictoire");
   showstat.style.height = "100%";
 }
 function closeoverlay() {
-  var showstat = document.getElementById("MyNavVictoire");
+  let showstat = document.querySelector("#MyNavVictoire");
   showstat.style.height = "0%";
 }
 if (window.location.href.includes("victoire.html")) {
+  width["ow"] = parseInt(sessionStorage.getItem("widthow")) || 0;
+  width["fps"] = parseInt(sessionStorage.getItem("widthfps")) || 0;
+  width["mv"] = parseInt(sessionStorage.getItem("widthmv")) || 0;
 
-  widthow = parseInt(sessionStorage.getItem("widthow")) || 0;
-  widthfps = parseInt(sessionStorage.getItem("widthfps")) || 0;
-  widthmv = parseInt(sessionStorage.getItem("widthmv")) || 0;
+  width["ow"] = Math.max(0, width["ow"]);
+  width["fps"] = Math.max(0, width["fps"]);
+  width["mv"] = Math.max(0, width["mv"]);
 
-  widthow = Math.max(0, widthow);
-  widthfps = Math.max(0, widthfps);
-  widthmv = Math.max(0, widthmv);
+  if (document.querySelector("#bar-ow")) {
+    document.querySelector("#bar-ow").style.width = width["ow"] + "%";
+    document.querySelector("#pts-ow").innerHTML = width["ow"] + " pts";
+  }
+  if (document.querySelector("#bar-fps")) {
+    document.querySelector("#bar-fps").style.width = width["fps"] + "%";
+    document.querySelector("#pts-fps").innerHTML = width["fps"] + " pts";
+  }
+  if (document.querySelector("#bar-mv")) {
+    document.querySelector("#bar-mv").style.width = width["mv"] + "%";
+    document.querySelector("#pts-mv").innerHTML = width["mv"] + " pts";
+  }
+  ow = width["ow"];
+  fps = width["fps"];
+  mv = width["mv"];
+  totalscore = ow + fps + mv;
+  if (totalscore >= bestscore) {
+    localStorage.setItem("bestscore", totalscore);
+  }
 
-  if (document.getElementById("barow")) {
-    document.getElementById("barow").style.width = widthow + "%";
-    document.getElementById("ptsow").innerHTML = widthow + " pts";
-  }
-  if (document.getElementById("barfps")) {
-    document.getElementById("barfps").style.width = widthfps + "%";
-    document.getElementById("ptsfps").innerHTML = widthfps + " pts";
-  }
-  if (document.getElementById("barmv")) {
-    document.getElementById("barmv").style.width = widthmv + "%";
-    document.getElementById("ptsmv").innerHTML = widthmv + " pts";
-  }
-  var bestscore = localStorage.getItem("bestscore") || 0;
-  let finalScore = widthow + widthfps + widthmv;
-  if (widthow >= widthfps + 1 && widthow >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu es le plus fort dans la catégorie Open World avec " + widthow + "/100"
-  }
-  if (widthfps >= widthow + 1 && widthfps >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu es le plus fort dans la catégorie FPS avec " + widthfps + "pts/100"
-  }
-  if (widthmv >= widthow + 1 && widthmv >= widthfps + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu es le plus fort dans la catégorie MetroidVania avec " + widthmv + "pts/100"
-  }
-  if (finalScore === 300) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Bravo tu as répondu correctement à toutes les questions sans fautes !"
-  }
-  if (finalScore >= bestscore) {
-    localStorage.setItem("bestscore", finalScore)
-  }
-  if (widthow === widthfps && widthow >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !"
-  }
-  if (widthow === widthmv && widthow >= widthfps + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !"
-  }
-  if (widthfps === widthmv && widthfps >= widthmv + 1) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans les catégories FPS et Metroidvania !"
-  }
-  if (widthow === widthfps && widthfps === widthmv === finalScore <= 300) {
-    var bestof3 = document.getElementById("bestof3")
-    bestof3.innerHTML = "Tu as obtenu le même nombre de points dans toutes les catégories !"
-  }
-    let score = document.getElementById("score");
-  score.innerHTML = "Tu as fini avec " + finalScore + " points / 300";
-   let bestscorev = document.getElementById("bestscorev")
-    bestscorev.innerHTML = bestscore
-}
-//cheat 
-let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-let konamiPosition = 0;
-document.addEventListener('keydown', function (e) {
-  if (e.key === konamiCode[konamiPosition]) {
-    konamiPosition++;
-    if (konamiPosition === konamiCode.length) {
-      konamiPosition = 0;
-      cheat();
-    }
+  if (ow > fps && ow > mv) {
+    message =
+      "Tu es le plus fort dans la catégorie Open World avec " + ow + " pts/100";
+  } else if (fps < ow && fps < mv) {
+    message =
+      "Tu es le plus fort dans la catégorie FPS avec " + fps + " pts/100";
+  } else if (mv > ow && mv > fps) {
+    message =
+      "Tu es le plus fort dans la catégorie MetroidVania avec " +
+      mv +
+      "pts/100";
+  } else if (ow === fps && ow > mv) {
+    message =
+      "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !";
+  } else if (ow === mv && ow > fps) {
+    message =
+      "Tu as obtenu le même nombre de points dans les catégories Open World et MetroidVania !";
+  } else if (fps === mv && fps > ow) {
+    message =
+      "Tu as obtenu le même nombre de points dans les catégories FPS et MetroidVania !";
+  } else if (ow === fps && ow === mv && totalscore != 300) {
+    message =
+      "Tu as obtenu le même nombre de points dans toutes les catégories";
   } else {
-    konamiPosition = 0;
+    message = "Bravo tu as répondu correctement à toutes les questions !";
   }
-});
-let basiccheat = ['c', 'h', 'e', 'a', 't'];
+  stat["vone"].textContent = "Tu as finis avec " + totalscore + " points/300";
+  stat["vtwo"].textContent = message;
+  stat["vthree"].textContent = bestscore;
+}
+//cheat
+let basiccheat = ["c", "h", "e", "a", "t"];
 let basicPosition = 0;
-document.addEventListener('keydown', function (e) {
+document.addEventListener("keydown", function (e) {
   if (e.key === basiccheat[basicPosition]) {
     basicPosition++;
     if (basicPosition === basiccheat.length) {
@@ -913,76 +446,83 @@ document.addEventListener('keydown', function (e) {
 });
 function cheat() {
   if (window.location.href.includes("ow.html")) {
-    widthow = 100;
-    barow.style.width = widthow + "%";
-    ptsow.innerHTML = widthow + " pts";
-    sessionStorage.setItem("widthow", widthow);
-    owrestant = 0;
-    popuptxt.innerHTML = "Répondez encore à " + owrestant + " questions avant d'accéder au prochain niveau.";
-    carimg = document.getElementById("carimg");
-    carimg.classList.remove("carimg");
-    carimg.classList.add("carunlocked");
+    document.querySelectorAll(".cible").forEach((cible) => {
+      cible.style.display = "none";
+    });
+    width["ow"] = 100;
+    bars["ow"].style.width = width["ow"] + "%";
+    pts["ow"].innerHTML = width["ow"] + " pts";
+    sessionStorage.setItem("widthow", width["ow"]);
+    reste = 0;
+    tp["ow"].id = "tpunlocked";
+    popuptxt["ow"].style.visibility = "hidden";
     vie = 3;
     sessionStorage.setItem("vie", vie);
-    document.getElementById("coeur1").src = "../img/heart.png";
-    document.getElementById("coeur2").src = "../img/heart.png";
-    document.getElementById("coeur3").src = "../img/heart.png";
-  }
-  else if (window.location.href.includes("fps.html")) {
-    widthfps = 100;
-    barfps.style.width = widthfps + "%";
-    ptsfps.innerHTML = widthfps + " pts";
-    sessionStorage.setItem("widthfps", widthfps);
-    fpsrestant = 0;
-    popuptxt2.innerHTML = "Répondez encore à " + fpsrestant + " questions avant d'accéder au prochain niveau.";
-    carimg2 = document.getElementById("carimg2")
-    carimg2.classList.remove("carimg2");
-    carimg2.classList.add("carunlocked2");
+    document.querySelector("#coeur1").src = "../img/heart.png";
+    document.querySelector("#coeur2").src = "../img/heart.png";
+    document.querySelector("#coeur3").src = "../img/heart.png";
+  } else if (window.location.href.includes("fps.html")) {
+    document.querySelectorAll(".cible").forEach((cible) => {
+      cible.style.display = "none";
+    });
+    width["fps"] = 100;
+    bars["fps"].style.width = width["fps"] + "%";
+    pts["fps"].innerHTML = width["fps"] + " pts";
+    sessionStorage.setItem("widthfps", width["fps"]);
+    reste = 0;
+    tp["fps"].id = "tpunlocked";
+    popuptxt["fps"].style.visibility = "hidden";
     vie = 3;
     sessionStorage.setItem("vie", vie);
-    document.getElementById("coeur1").src = "../img/heart.png";
-    document.getElementById("coeur2").src = "../img/heart.png";
-    document.getElementById("coeur3").src = "../img/heart.png";
-  }
-  else if (window.location.href.includes("mv.html")) {
-    widthmv = 100;
-    barmv.style.width = widthmv + "%";
-    ptsmv.innerHTML = widthmv + " pts";
-    sessionStorage.setItem("widthmv", widthmv);
-    mvrestant = 0;
-    popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
-    carimg3 = document.getElementById("carimg3")
-    carimg3.classList.remove("carimg3");
-    carimg3.classList.add("carunlocked3");
+    document.querySelector("#coeur1").src = "../img/heart.png";
+    document.querySelector("#coeur2").src = "../img/heart.png";
+    document.querySelector("#coeur3").src = "../img/heart.png";
+  } else if (window.location.href.includes("mv.html")) {
+    document.querySelectorAll(".cible").forEach((cible) => {
+      cible.style.display = "none";
+    });
+    width["mv"] = 100;
+    bars["mv"].style.width = width["mv"] + "%";
+    pts["mv"].innerHTML = width["mv"] + " pts";
+    sessionStorage.setItem("widthmv", width["mv"]);
+    reste = 0;
+    tp["mv"].id = "tpunlocked";
+    popuptxt["mv"].style.visibility = "hidden";
     vie = 3;
     sessionStorage.setItem("vie", vie);
-    document.getElementById("coeur1").src = "../img/heart.png";
-    document.getElementById("coeur2").src = "../img/heart.png";
-    document.getElementById("coeur3").src = "../img/heart.png";
-  }
-
-  if (window.location.href.includes("gameover.html")) {
+    document.querySelector("#coeur1").src = "../img/heart.png";
+    document.querySelector("#coeur2").src = "../img/heart.png";
+    document.querySelector("#coeur3").src = "../img/heart.png";
+  } else if (window.location.href.includes("gameover.html")) {
     window.location.href = "../view/victoire.html";
-    widthow = 100;
-    barow.style.width = widthow + "%";
-    ptsow.innerHTML = widthow + " pts";
-    sessionStorage.setItem("widthow", widthow);
-    widthfps = 100;
-    barfps.style.width = widthfps + "%";
-    ptsfps.innerHTML = widthfps + " pts";
-    sessionStorage.setItem("widthfps", widthfps);
-    widthmv = 100;
-    barmv.style.width = widthmv + "%";
-    ptsmv.innerHTML = widthmv + " pts";
-    sessionStorage.setItem("widthmv", widthmv);
-    mvrestant = 0;
-    popuptxt3.innerHTML = "Répondez encore à " + mvrestant + " questions avant d'accéder au prochain niveau.";
-    carimg3 = document.getElementById("carimg3")
-    carimg3.classList.remove("carimg3");
-    carimg3.classList.add("carunlocked3");
+    width["ow"] = 100;
+    bar["ow"].style.width = width["ow"] + "%";
+    pts["ow"].innerHTML = width["ow"] + " pts";
+    sessionStorage.setItem("widthow", width["ow"]);
+    width["fps"] = 100;
+    bars["fps"].style.width = width["fps"] + "%";
+    pts["fps"].innerHTML = width["fps"] + " pts";
+    sessionStorage.setItem("widthfps", width["fps"]);
+    width["mv"] = 100;
+    bars["mv"].style.width = width["mv"] + "%";
+    pts["mv"].innerHTML = width["mv"] + " pts";
+    sessionStorage.setItem("widthmv", width["mv"]);
     vie = 3;
-    document.getElementById("coeur1").src = "../img/heart.png";
-    document.getElementById("coeur2").src = "../img/heart.png";
-    document.getElementById("coeur3").src = "../img/heart.png";
+    document.querySelector("#coeur1").src = "../img/heart.png";
+    document.querySelector("#coeur2").src = "../img/heart.png";
+    document.querySelector("#coeur3").src = "../img/heart.png";
+  }
+}
+// create game
+function ValiderChoixQuestion() {
+  const textarea = document.querySelector("#navtextarea");
+  const checkbox = document.querySelector("#navcheckbox");
+  const radio = document.querySelector("#navradio");
+  if (document.querySelector("#QCM").checked === true) {
+    textarea.style.height = "100%";
+  } else if (document.querySelector("#QCU").checked === true) {
+    checkbox.style.height = "100%";
+  } else if (document.querySelector("#QL").checked === true) {
+    radio.style.height = "100%";
   }
 }
