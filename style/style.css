@@ -53,7 +53,7 @@ body {
   text-align: center;
   margin-bottom: 0;
   margin-top: -7%;
-  font-size: 270%;
+  font-size: 220%;
   font-weight: 550;
 }
 
@@ -68,13 +68,13 @@ body {
 }
 
 .h1mv {
-  text-shadow: 0 0 7px #00c8ff;
-  color: #00aaff;
+  text-shadow: 0 0 7px #0095ff;
+  color: #7bd7ff;
 }
 
 .h2 {
   text-align: center;
-  font-size: 240%;
+  font-size: 200%;
   font-weight: 550;
   margin-top: 0;
   max-width: 64%;
@@ -93,32 +93,48 @@ body {
 
 .h2mv {
   text-shadow: 0 0 6px #00c7fe;
-  color: #0099cc;
+  color: #44c8f4;
 }
 
 .p {
   text-align: left;
   margin-inline: auto;
-  font-size: 100%;
+  font-size: 80%;
   font-weight: 550;
   max-width: 50%;
+  padding: 1%;
+  border-radius: 10px;
+  transition: box-shadow 0.5s;
+  margin-bottom: 2%;
 }
 
 .pow {
   text-shadow: 0 0 7px #91ff00;
   color: #b8ffc9;
+  box-shadow: 0 0 0px #07ff07 inset, 0 0 0px #07ff07, 0 0 8px #1e2a1e,
+    0 0 10px #1e2a1e, 0 0 9px #1e2a1e, 0 0 8px #1e2a1e, 0 0 7px #026402 inset;
 }
-
+.pow:hover {
+  box-shadow: 0 0 30px #07ff07 inset, 0 0 5px #07ff07;
+}
 .pfps {
   text-shadow: 0 0 7px #ff3c00;
   color: #e7db2e;
+  box-shadow: 0 0 0px #ffa007 inset, 0 0 0px #ff4907, 0 0 8px #ffe600,
+    0 0 10px #6a3030, 0 0 9px #ffbf00, 0 0 8px #fa8100, 0 0 7px #ff7700 inset;
 }
-
+.pfps:hover {
+  box-shadow: 0 0 30px #ffbd07 inset, 0 0 5px #ff0707;
+}
 .pmv {
-  text-shadow: 0 0 7px #00c8ff;
-  color: #66ccff;
+  text-shadow: 0 0 7px #7be2ff;
+  color: #99d6f5;
+  box-shadow: 0 0 0px #07ffea inset, 0 0 0px #0741ff, 0 0 8px #4f7981,
+    0 0 10px #1e1f2a, 0 0 9px #1e242a, 0 0 8px #1e232a, 0 0 7px #023e64 inset;
 }
-
+.pmv:hover {
+  box-shadow: 0 0 30px #07ffea inset, 0 0 5px #072cff;
+}
 /* textes */
 /* input */
 /* radio */
@@ -135,11 +151,12 @@ body {
 .checkmark3 {
   margin-left: 15vw;
   position: absolute;
-  top: 15%;
+  top: 40%;
   width: 25px;
   height: 25px;
   border-radius: 50%;
 }
+
 .checkmark1:after,
 .checkmark2:after,
 .checkmark3:after {
@@ -347,7 +364,7 @@ body {
 }
 
 .divimage {
-  padding-block: 3%;
+  padding-block: 1%;
   width: 50%;
   margin: auto;
 }

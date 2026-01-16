@@ -319,7 +319,7 @@ if (window.location.href.includes("gameover.html")) {
       q.category[20] +
       " avec " +
       mvrac +
-      "pts/100";
+      " pts/100";
   } else if (owrac === fpsrac && owrac > mvrac) {
     message =
       "Tu as obtenu le même nombre de points dans les catégories Open World et FPS !";
